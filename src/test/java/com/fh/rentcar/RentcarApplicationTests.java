@@ -24,7 +24,7 @@ class RentcarApplicationTests {
 //
 //        condition.put("name","红旗Rs2");
 //        condition.put("shop_id",1201);
-        System.out.println("卧槽卧槽卧槽卧槽卧槽卧槽我");
+        System.out.println("卧槽卧槽卧槽卧槽卧槽卧槽88888我");
         PageHelper.startPage(2,2);
         List<Cars> carsList = carsService.getAllCars();
         PageInfo<Cars> pages = new PageInfo<>(carsList);

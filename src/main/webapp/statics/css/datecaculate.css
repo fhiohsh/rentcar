@@ -1,0 +1,94 @@
+#modal {
+    width: 100%;
+    height: 100%;
+    /* 默认隐藏 */
+    display: none;
+    /* 固定定位 */
+    position: fixed;
+    /* 设置在顶层 */
+    z-index: 1000;
+    /* 设置位置 */
+    left: 0;
+    top: 0;
+    overflow: auto;
+
+}
+/* 弹窗内容 */
+
+#modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 10% auto;
+    border: 1px solid #888;
+    width: 360px;
+    height: 320px;
+    z-index: 1001;
+}
+
+.denglu {
+    position: absolute;
+    top: 50px;
+    right: 125px;
+    font-size: 25px;
+}
+
+#yhu {
+    position: absolute;
+    /* width: 320px; */
+    height: 35px;
+    top: 120px;
+    right: 80px;
+    font-size: 19px;
+}
+
+#pas {
+    position: absolute;
+    top: 180px;
+    right: 80px;
+    font-size: 19px;
+}
+
+#qued {
+    position: absolute;
+    /* letter-spacing: 15px; */
+    width: 170px;
+    height: 35px;
+    top: 240px;
+    right: 80px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 30px;
+    text-align: center;
+    background-color: aqua;
+    text-decoration: none;
+}
+
+#close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+/* 设置关闭按钮的鼠标指针 */
+
+#close:hover,
+#close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#orderday {
+    position: absolute;
+    margin-left: 100px;
+    width: 240px;
+    height: 35px;
+    top: 280px;
+    right: 60px;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+}

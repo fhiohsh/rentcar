@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fh.rentcar.mapper.ShopMapper">
+
+  <select id="getShopsByCity" resultMap="getShopsByCityMap">
+      select * from shops where city_id = #{cityId}
+  </select>
+    <resultMap id="getShopsByCityMap" type="com.fh.rentcar.pojo.Shops">
+        <id column="id" property="id" />
+
+        <association property="city" column="city_id"
+                     javaType="com.fh.rentcar.pojo.City" select="MapToCity"/>
+        <association property="street" column="street_id"
+                     javaType="com.fh.rentcar.pojo.Street" select="MapToStreet"/>
+    </resultMap>
+    <select id="MapToCity" resultType="com.fh.rentcar.pojo.City">
+        select * from citys where id = #{id}
+    </select>
+    <select id="MapToStreet" resultType="com.fh.rentcar.pojo.Street">
+        select * from street where id = #{id}
+    </select>
+
+
+<!--    根据ID获取门店-->
+    <select id="getShopById" resultMap="getShopsByCityMap">
+         select * from shops where id = #{sid}
+    </select>
+
+</mapper>

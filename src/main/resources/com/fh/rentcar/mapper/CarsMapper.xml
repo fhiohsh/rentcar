@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fh.rentcar.mapper.CarsMapper">
+
+<!--    获取所有车型-->
+    <select id="getAllCars" resultMap="CarByCity">
+        select * from carlist
+    </select>
+<!--    城市id查车-->
+    <select id="getCarByCity" resultMap="CarByCity">
+        select * from carlist where city_id = #{cid}
+    </select>
+    <resultMap id="CarByCity" type="com.fh.rentcar.pojo.Cars">
+        <id column="id" property="id" />
+
+        <association property="city" column="city_id"
+                     javaType="com.fh.rentcar.pojo.City" select="MapToCity"/>
+        <association property="street" column="street_id"
+                     javaType="com.fh.rentcar.pojo.Street" select="MapToStreet"/>
+    </resultMap>
+    <select id="MapToCity" resultType="com.fh.rentcar.pojo.City">
+        select * from citys where id = #{id}
+    </select>
+    <select id="MapToStreet" resultType="com.fh.rentcar.pojo.Street">
+        select * from street where id = #{id}
+    </select>
+
+<!--    根据车名查车-->
+    <select id="getCarsByName" resultMap="getCarsByNameMap">
+        select * from carlist where name = #{carName};
+    </select>
+    <resultMap id="getCarsByNameMap" type="com.fh.rentcar.pojo.Cars">
+        <id column="id" property="id" />
+        <id column="name" property="name" />
+        <association property="shops" column="shop_id"
+                     javaType="com.fh.rentcar.pojo.Shops" select="MapToShops"/>
+        <association property="city" column="city_id"
+                     javaType="com.fh.rentcar.pojo.City" select="MapToCity"/>
+        <association property="street" column="street_id"
+                     javaType="com.fh.rentcar.pojo.Street" select="MapToStreet"/>
+    </resultMap>
+    <select id="MapToShops" resultType="com.fh.rentcar.pojo.Shops">
+        select * from shops where id = #{city_id}
+    </select>
+
+    <select id="findCarByCondition" parameterType="java.util.Map" resultMap="getCarsByNameMap">
+        select * from carlist
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="name != null">
+                and name like CONCAT(#{name},'%')
+            </if>
+            <if test="shop_id != null">
+                and shop_id = #{shop_id}
+            </if>
+        </trim>
+    </select>
+</mapper>

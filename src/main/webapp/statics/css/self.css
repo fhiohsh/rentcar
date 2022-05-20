@@ -1,0 +1,208 @@
+.meb-nav2 li.on a{
+    background: #23b7b7;
+    font-weight: bold;
+    color: #fff;
+}
+.mr-tab2 a.on{
+    background: #23b7b7;
+    border-bottom-color: #23b7b7;
+    color: #fff;
+}
+.mr-infor2 h2 b{
+color: #23b7b7;
+}
+
+/* 验车单 */
+.bg110{ 
+    position:fixed;
+    left:0;top:0;width:100%; height:100%; z-index:98; background:url(../images/black60.png);
+    display: none;}
+.logindemoBg{
+    position: fixed;
+    top:60px;
+    left: 18%;
+    margin: 0 auto;
+    width: 1000px;
+    height: 630px;
+    z-index: 99;
+    background: rgb(236, 233, 233);
+    /* border: 1px rgb(216, 24, 24) solid; */
+    display: none;
+}
+.logindemoBg .login_panels{
+    width: 960px;
+    height: 620px;
+    margin: 0 auto;
+    /* border: 1px #ccc solid; */
+}
+
+.logindemoBg .login_panels .closeBg{
+    position: absolute;
+    z-index: 9;
+    top: 10px;
+    right: 10px;
+    width: 27px;
+    height: 27px;
+}
+.logindemoBg .login_panels .login_labelBg{
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    /* border: #23b7b7 1px solid; */
+   margin-left: 400px;
+}
+.login_labelBg h2{
+    font-size: 20px;
+    color: rgb(11, 11, 11);
+}
+.logindemoBg .login_panels .closeBg span{
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    padding: 5px;
+    background: url(../images/btnX.png) 5px 5px no-repeat #fff;
+    background-size: 15px 15px;
+    border: 1px solid #666;
+}
+.verifybg{
+    float: left;
+    margin-left: 230px;
+    margin-top: 20px;
+    width: 700px;
+}
+.verifybg ul{
+    float: left;
+    margin-left: -20px;
+}
+.verifybg ul li{
+    /* width: 300px; */
+    background: url(../images/bg_line_dashed.png) repeat-x;
+    line-height: 50px;
+    font-size: 18px;
+    color: #000;
+}
+.verifybg ul li span{
+    width: 300px;
+    display: inline-block;
+}
+.lfl{
+    margin-left: -20px;
+    margin-top: 8px;
+}
+.annunce{
+    position: absolute;
+    margin-top: 352px;
+    margin-left: -20px;
+    width: 700px;
+    height: 100px;
+    border: 2px #ccc solid;
+}
+.annunce span{
+    font-size: 20px;
+}
+.annunce p{
+    margin-left: 20px;
+}
+.confirmBg{
+    width:150px;
+    height: 50px;
+    position: absolute;
+    left: 430px;
+    top: 520px;
+  
+}
+.confirmBg a{
+    position: relative;
+    width:200px;
+    height: 50px;
+    /* border: 1px rgb(22, 11, 5) solid; */
+    background: #1fb9b9;
+    /* border-style: solid; */
+    color: rgb(241, 237, 237);
+    font-size: 25px;
+    margin-left: 20px;
+    font-weight: 800;
+}
+.confirmBg a span{
+    padding: 15px;
+}
+.confirmBg a:hover{
+    color: rgb(7, 7, 7);
+}
+
+/* 修改租期 */
+.logindemoBg2{
+    position: absolute;
+    top:620px;
+    left: 60%;
+    margin: 0 auto;
+    width: 200px;
+    height: 78px;
+    z-index: 59;
+    background: rgb(253, 251, 251);
+    /* border: 1px rgb(216, 24, 24) solid; */
+    display: none;
+}
+
+.logindemoBg2 .newdates{
+    width: 170px;
+    /* padding: 10px; */
+    height: 65px;
+    background: #bec3c3;
+    /* border: 1px #1fb9b9 solid; */
+}
+.logindemoBg2 .newdates input{
+    border-width:0;
+    background: #f6f6f6;
+    font-size: 15px;
+    width: 170px;
+}
+.logindemoBg2 .newdates a{
+    width: 80px;
+    height: 50px;
+ margin-left: 45px;
+ top:4px;
+ position: relative;
+ /* background: #1fb9b9; */
+ font-size: 25px;
+ padding: 10px;
+ border-radius: 2px;
+ font-weight: 400;
+}
+
+/* 
+ <a href="javascript:;" class="xwjg"><strong>预约看房</strong></a>
+ <div class="bg100"></div>
+  <div class="logindemo3">
+   <div class="login_panel">
+        <div class="close2">×</div>
+        <div class="login_label">
+             <h2>预约时间</h2>
+        </div>
+   </div>
+     
+  </div>
+
+.bg100{ position:fixed;left:0;top:0;width:100%; height:100%; z-index:9; background:url(../images/black60.png);
+    display:none;}
+
+    <%-- 预约增加--%>
+            <script type="text/javascript">
+                $("#apbtn").click(function () {
+                    $(".bg100").hide();
+                    $(".logindemo3").fadeOut();
+                    $("#appointform").submit();
+                });
+            </script>
+//输入时间。
+	$(".xwjg").click(function(){
+		$(".bg100").show();
+		$(".logindemo3").fadeIn();
+	});
+	$(".close2").click(function(){
+		$(".bg100").hide();
+		$(".logindemo3").fadeOut();
+	});
+     
+*/

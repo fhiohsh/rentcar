@@ -1,0 +1,34 @@
+server:
+  port: 8089
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: alan
+    url: jdbc:mysql://localhost:3306/carrent?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    hikari:
+      connection-timeout: 30000
+      minimum-idle: 10
+      maximum-pool-size: 65
+      idle-timeout: 60000
+      max-lifetime: 600000
+      auto-commit: false
+      pool-name: MyHikariCP
+      leak-detection-threshold: 5000
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+    pathmatch:
+      matching-strategy: ant_path_matcher
+mybatis:
+  mapper-locations: classpath:com/fh/rentcar/mapper/*.xml
+  type-aliases-package: com.fh.rentcar.pojo
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+pagehelper:
+  helper-dialect: mysql
+  reasonable: false
+  support-methods-arguments: true
+  params: count.Sql
+

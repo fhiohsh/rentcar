@@ -15,6 +15,7 @@ public class Cars {
     private String img;
     private Integer rentstatus;
     private String points;
+    private Integer rentprice;
 //    private Integer shop_id;
     Shops shops;
     City city;

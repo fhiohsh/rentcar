@@ -17,4 +17,7 @@ public interface CarsService {
 
     //多条件
     List<Cars> findCarByCondition(Map<String,Object> objectMap);
+
+    //车名查车
+    Cars carByName(String cname);
 }

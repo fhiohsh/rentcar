@@ -15,6 +15,8 @@ public interface CarsMapper {
     List<Cars> getCarsByName(String carName);
 //    Cars getCarsById(Integer carId);
 
-    //多条件mybatis
+    //多条件查询-mybatis
     List<Cars> findCarByCondition(Map<String,Object> objectMap);
+    //车名
+    Cars carByName(String cname);
 }

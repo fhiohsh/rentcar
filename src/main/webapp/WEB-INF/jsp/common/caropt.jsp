@@ -123,97 +123,18 @@
                 <!--品牌全部-->
             </dd>
         </dl>
+        <dl class="fliter-bd clearfix">
+            <dt class="branddt">类型：</dt>
+            <dd> <a class="on" href="#">不限</a>
+                <a class="" href="#" title="3万以下二手车"> 经济型 </a>
+                <a class="" href="#" title="5万以下二手车"> 舒适型 </a>
+                <a class="" href="#" title="7万以下二手车"> 精英型 </a>
+                <a class="" href="#" title="9万以下二手车"> SUV </a>
+                <a class="" href="#" title="12万以下二手车"> 15座商务型</a>
+                <a class="" href="#" title="16万以下二手车"> 电动型 </a>
 
-        <div class="moreitem clearfix">
-            <span>参数：</span>
-            <dl class="selecter">
-                <dt>车型</dt>
-                <dd>
-                    <ul>
-                        <li><a href="javascript:void(0);">不限</a></li>
-                        <li><a href="javascript:void(0);"> 两厢轿车 </a></li>
-                        <li><a href="javascript:void(0);"> 三厢轿车 </a></li>
-                        <li><a href="javascript:void(0);"> 跑车 </a></li>
-                        <li><a href="javascript:void(0);"> SUV </a></li>
-                        <li><a href="javascript:void(0);"> MPV </a></li>
-                    </ul>
-                </dd>
-            </dl>
-            <dl class="selecter">
-                <dt>座位</dt>
-                <dd>
-                    <ul>
-                        <li><a href="javascript:void(0);">不限</a></li>
-                        <li><a href="javascript:void(0);"> 2座 </a></li>
-                        <li><a href="javascript:void(0);"> 4座 </a></li>
-                        <li><a href="javascript:void(0);"> 5座 </a></li>
-                        <li><a href="javascript:void(0);"> 6座 </a></li>
-                        <li><a href="javascript:void(0);"> 7座及以上 </a></li>
-                    </ul>
-                </dd>
-            </dl>
-            <dl class="selecter">
-                <dt>排量</dt>
-                <dd>
-                    <ul>
-                        <li><a href="javascript:void(0);">不限</a></li>
-                        <li><a href="javascript:void(0);"> 1.0L以下 </a></li>
-                        <li><a href="javascript:void(0);"> 1.0-1.6L </a></li>
-                        <li><a href="javascript:void(0);"> 1.6-2.0L </a></li>
-                        <li><a href="javascript:void(0);"> 2.0-3.0L </a></li>
-                        <li><a href="javascript:void(0);"> 3.0L以上 </a></li>
-                    </ul>
-                </dd>
-            </dl>
-            <dl class="selecter">
-                <dt>排放标准</dt>
-                <dd>
-                    <ul>
-                        <li><a href="javascript:void(0);">不限</a> </li>
-                        <li><a href="javascript:void(0);"> 国二及以上 </a></li>
-                        <li><a href="javascript:void(0);"> 国三及以上 </a></li>
-                        <li><a href="javascript:void(0);"> 国四及以上 </a></li>
-                        <li><a href="javascript:void(0);"> 国五 </a></li>
-                    </ul>
-                </dd>
-            </dl>
-            <dl class="selecter">
-                <dt>燃油类型</dt>
-                <dd>
-                    <ul>
-                        <li><a href="javascript:void(0);">不限</a></li>
-                        <li><a href="javascript:void(0);"> 汽油 </a></li>
-                        <li><a href="javascript:void(0);"> 柴油 </a></li>
-                        <li><a href="javascript:void(0);"> 电动 </a></li>
-                        <li><a href="javascript:void(0);"> 油电混合 </a></li>
-                        <li><a href="javascript:void(0);"> 其他 </a></li>
-                    </ul>
-                </dd>
-            </dl>
-            <dl class="selecter">
-                <dt>颜色</dt>
-                <dd>
-                    <ul>
-                        <li><a href="javascript:void(0);">不限</a></li>
-                        <li><a href="javascript:void(0);"> <i class="c-lump03"></i>黑色 </a> </li>
-                        <li><a href="javascript:void(0);"> <i class="c-lump04"></i>白色 </a></li>
-                        <li><a href="javascript:void(0);"> <i class="c-lump10"></i>银灰色 </a></li>
-                        <li><a href="javascript:void(0);"> <i class="c-lump09"></i>红色 </a> </li>
-                        <li><a href="javascript:void(0);"> <i class="c-lump15"></i>深灰色 </a></li>
-                        <li><a href="javascript:void(0);"> <i class="c-lump11"></i>橙色 </a></li>
-                        <li><a href="javascript:void(0);"> <i class="c-lump02"></i>绿色 </a></li>
-                        <li><a href="javascript:void(0);"> <i class="c-lump05"></i>蓝色 </a></li>
-                        <li><a href="javascript:void(0);"> <i class="c-lump06"></i>咖啡色 </a></li>
-                        <li><a href="javascript:void(0);"> <i class="c-lump07"></i>紫色 </a></li>
-                        <li><a href="javascript:void(0);"> <i class="c-lump08"></i>香槟色 </a></li>
-                        <li><a href="javascript:void(0);"> <i class="c-lump12"></i>多彩色 </a></li>
-                        <li><a href="javascript:void(0);"> <i class="c-lump13"></i>黄色 </a></li>
-                        <li><a href="javascript:void(0);"> <i class="c-lump14"></i>其它 </a></li>
-                    </ul>
-                </dd>
-            </dl>
-        </div>
-
+            </dd>
+        </dl>
     </div>
     <div class="sel-menu clearfix">
         <p class="sel-p">当前筛选&gt;</p>

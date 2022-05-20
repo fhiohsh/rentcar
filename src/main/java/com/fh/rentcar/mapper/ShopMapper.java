@@ -7,8 +7,8 @@ import java.util.List;
 
 @Mapper
 public interface ShopMapper {
-
+    //城市查门店
     List<Shops> getShopsByCity(int cityId);
-
+    //根据门店id
     Shops getShopById(int sid);
 }

@@ -29,4 +29,9 @@ public class CarListServiceImp implements CarsService {
     public List<Cars> findCarByCondition(Map<String, Object> objectMap) {
         return carsMapper.findCarByCondition(objectMap);
     }
+
+    @Override
+    public Cars carByName(String cname) {
+        return carsMapper.carByName(cname);
+    }
 }

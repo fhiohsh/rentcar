@@ -6,6 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>风车车</title>
+
     <%@ include file="common/path.jsp"%>
 </head>
 <body>
@@ -13,7 +14,7 @@
 <ul class="navmenu">
     <li class="active"><a href="">首页</a><span></span></li>
     <li><a href="">租车</a><span></span></li>
-    <li><a href="/pages/1">车型查询</a><span></span></li>
+    <li><a href="/cars/pages/1">车型查询</a><span></span></li>
     <li><a href="/shop">营业网点</a><span></span></li>
     <li><a href="">个人中心</a><span></span></li>
 </ul>
@@ -158,6 +159,7 @@
             </ul>
         </div>
         <div class="clear_fix"></div>
+
         <div class="purpose">
             <div class="ind-dz-lc">
                 <ul>
@@ -190,11 +192,14 @@
         </div>
     </div>
 </div>
+
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('.flexslider').flexslider({
             directionNav: true,
-            pauseOnAction: false
+            pauseOnAction: false,
+            touch:true
         });
         $('.flexslider').hover(function () {
             $('.flex-direction-nav').fadeIn();

@@ -192,7 +192,7 @@ var words = 'ABCDEFGHJKLMNPQRSTWXYZ';
 			    	currentCity.text (txt);
 			    	siteName.text (txt);
 			    	console.log(txt);
-			    	location.href = "/pages/"+txt.toString()+"/1";
+			    	location.href = "/cars/pages/"+txt.toString()+"/1";
 			    	// ajax  车辆信息
 					// $.ajax({
 					// 	type:"POST",

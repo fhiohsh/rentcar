@@ -1,5 +1,5 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="/statics/css/base.css" />
@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/statics/css/datecaculate.css">
     <link rel="stylesheet" type="text/css" href="/statics/css/loginstyle.css">
     <script type="text/javascript" src="/statics/script/jquery-1.8.0.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/statics/script/city.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/statics/script/city3.js"></script>
 
     <title>Title</title>
 </head>
@@ -30,13 +30,12 @@
 <!-- 车box -->
 <div class="carbox">
     <div class="carimg">
-        <img src="https://externalimage.1hai.cn/412/26b218c227844591b714a0ad7dd73d58.png"
-             onerror="this.src='/Content/Images/Shared/defaultCar.png'" alt="日产轩逸">
+        <img src="/statics/images/${car.img}" alt="日产轩逸">
     </div>
     <form action="" id="form0" method="post">
         <div class="car-info">
             <div class="car-name">
-                日产天籁
+                ${car.name}
             </div>
             <div class="car-des">
                 三厢&nbsp;&nbsp;5座&nbsp;&nbsp;自动
@@ -58,24 +57,12 @@
         <%--   区县     --%>
             <div class="cityqu">
                 <div class="newarea">
-                    <a href="">机场</a>
-                    <a href="">机场</a>
-                    <a href="">机场</a>
-                    <a href="">机场</a>
-                    <a href="">机场</a>
-                    <a href="">机场</a>
-                    <a href="">机场</a>
-                    <a href="">机场</a>
-                    <a href="">机场</a>
-                    <a href="">机场</a>
-                    <a href="">机场</a>
-                    <a href="">机场</a>
-                    <a href="">机场</a>
-                    <a href="">机场</a>
-                    <a href="">机场</a>
-                    <a href="">机场</a>
-                    <a href="">机场</a>
-                    <a href="">机场</a>
+                    <c:forEach var="street" items="${streetList}">
+                        <a href="">${street.name}区</a>
+                    </c:forEach>
+                    <c:if test="${empty streetList}">
+                        <span style="position: absolute;margin-left:120px;margin-top: 21px;font-size: 21px;font-weight: bold;">目前该城市还没有，请您查询其他城市！</span>
+                    </c:if>
                 </div>
             </div>
             <span class="common-bg city-logo"></span>
@@ -84,19 +71,21 @@
 </div>
 <div class="mainbox main2">
     <div id="carinfo" style="display: none">
-        <div class="shops" style="">
-            <div class="store-info">
-                <p>成化店</p>
-                <span>广州市越秀区北路与中山四路11号交界处大东门华庭中国银行旁</span>
+        <c:forEach var="shop" items="${carShopList}">
+            <div class="shops" style="">
+                <div class="store-info">
+                    <p>${shop.shops.name}</p>
+                    <span>${shop.city.name}${shop.street.name}${shop.shops.address}</span>
+                </div>
+<%--                <div class="store-price">--%>
+<%--                    ￥ 83--%>
+<%--                    <i>/日均</i>--%>
+<%--                </div>--%>
+                <div class="store-btn">
+                    <a href="javascript:;" class="bookcar"><span>预  定</span></a>
+                </div>
             </div>
-            <div class="store-price">
-                ￥ 83
-                <i>/日均</i>
-            </div>
-            <div class="store-btn">
-                <a href="javascript:;" class="bookcar"><span>预  定</span></a>
-            </div>
-        </div>
+        </c:forEach>
     </div>
     <div class="carwrap">
         <!-- 做个加载条 -->
@@ -106,7 +95,7 @@
                 正在为您查询可租车型...
             </p>
         </div>
-        <c:if test="${empty pages.list}">
+        <c:if test="${empty carShopList}">
             <div class="nocartip" id="nocartip" style="display: none">
                 <img src="https://booking.1hai.cn/Content/Images/Order/Step2/nocar.png?v=d2fb5f2aa0fe4134874c006eb28c20b5" alt="">
                 <div class="nocar-explain">
@@ -141,6 +130,7 @@
     </div>
 </div>
 <script>
+    var carname = '${carName}';
     var countdown = function(){
         setTimeout(function (){
             $("#carinfo").css('display','block');

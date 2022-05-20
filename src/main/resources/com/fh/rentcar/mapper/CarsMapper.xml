@@ -42,7 +42,7 @@
                      javaType="com.fh.rentcar.pojo.Street" select="MapToStreet"/>
     </resultMap>
     <select id="MapToShops" resultType="com.fh.rentcar.pojo.Shops">
-        select * from shops where id = #{city_id}
+        select * from shops where id = #{sid}
     </select>
 
     <select id="findCarByCondition" parameterType="java.util.Map" resultMap="getCarsByNameMap">
@@ -54,9 +54,19 @@
             <if test="name != null">
                 and name like CONCAT(#{name},'%')
             </if>
+            <if test="cityId != null">
+                and city_id = #{cityId}
+            </if>
+            <if test="streetId != null">
+                and street_id = #{streetId}
+            </if>
             <if test="shop_id != null">
                 and shop_id = #{shop_id}
             </if>
         </trim>
+    </select>
+
+    <select id="carByName" resultType="com.fh.rentcar.pojo.Cars">
+        select * from carlist where name = #{cname} limit 0,1
     </select>
 </mapper>

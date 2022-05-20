@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="city clearcity"> <em></em>
     <span id="DY_site_name" class="red city-name Left cl" style="font-size: 20px;">${citys.name}</span>

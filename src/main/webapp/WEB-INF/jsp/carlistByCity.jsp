@@ -26,7 +26,7 @@
 <ul class="navmenu">
     <li><a href="/a">首页</a><span></span></li>
     <li><a href="">租车</a><span></span></li>
-    <li class="active"><a href="/pages/1">车型查询</a><span></span></li>
+    <li class="active"><a href="/cars/pages/1">车型查询</a><span></span></li>
     <li><a href="/shop">营业网点</a><span></span></li>
     <li><a href="">个人中心</a><span></span></li>
 </ul>
@@ -74,7 +74,7 @@
 <%--            style="display: none"--%>
             <div id="carinfo" style="display: none">
                 <c:forEach var="car" items="${pages.list}">
-                    <a href="/carInfo" class="car-list" target="_blank"  >
+                    <a href="/cars/carShops/${citys.name}/${car.name}" class="car-list" target="_blank"  >
                         <div class="car-img"><img src="/statics/images/${car.img}" style="display:inline"></div>
                         <div class="car-des">
                             <span title="${car.name}">${car.name}</span>
@@ -86,16 +86,16 @@
                 <div class="pages">
 
                     <c:if test="${pages.hasPreviousPage}">
-                        <a class="" href="/pages/${cn}${pages.navigateFirstPage}">首页</a>
-                        <a class="" href="/pages/${cn}${pages.prePage}">&laquo;</a>
+                        <a class="" href="/cars/pages/${cn}${pages.navigateFirstPage}">首页</a>
+                        <a class="" href="/cars/pages/${cn}${pages.prePage}">&laquo;</a>
                     </c:if>
                     <c:forEach items="${pages.navigatepageNums}" var="num">
-                        <a class="" href="/pages/${cn}${num}">${num}</a>
+                        <a class="" href="/cars/pages/${cn}${num}">${num}</a>
                     </c:forEach>
                     <c:if test="${pages.hasNextPage}">
                         <%--            <a class="/pages/${pages.nextPage}" href="30/p/2.html">下一页</a>--%>
-                        <a class="" href="/pages/${cn}${pages.nextPage}">&raquo;</a>
-                        <a class="" href="/pages/${cn}${pages.pages}">尾页</a>
+                        <a class="" href="/cars/pages/${cn}${pages.nextPage}">&raquo;</a>
+                        <a class="" href="/cars/pages/${cn}${pages.pages}">尾页</a>
                     </c:if>
                 </div>
             </div>

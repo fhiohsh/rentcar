@@ -161,7 +161,7 @@
                                         <p>
                                             <span>取车时间：2022-04-27 14:00</span><br>
                                             <span>还车时间：2022-05-06 14:00</span><br>
-                                            <input type="hidden" id="test1" value="2022-05-20 1:18:30">
+                                            <input type="hidden" id="test1" value="2022-05-26 1:18:30">
 
                                         <blockquote class="layui-elem-quote" style="margin-top: 10px;">
                                             <div id="test2"></div>
@@ -173,10 +173,11 @@
                                                 <font>租期：2天</font><br> <span class="num nBlue">99 </span>
                                                 <font> /日</font>
                                             </div>
+
                                             <span class="num1 fl" style="height:43px;padding-top:10px;">
-                                                    <!-- <em>取车门店：八万人体育场店</em><br>
-                                                    <em>取车地址：上海上海市徐汇区斜土路2899号甲（光启文化广场内）</em>
-                                                    <br> -->
+                                                    <em>推荐还车门店：八万人体育场店</em><br>
+                                                    <em>地址：上海上海市徐汇区斜土路2899号甲（光启文化广场内）</em>
+                                                    <br>
 
                                                     <input type="hidden" class="CarValue_287"
                                                            value="{img:'/',id:'224',price:'28.2',status:'',title:'奥迪A4L 2013 款 2.0T CVT 35TFSI 技术型',url:'#'}">

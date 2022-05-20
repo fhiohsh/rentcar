@@ -38,7 +38,7 @@
                 ${car.name}
             </div>
             <div class="car-des">
-                三厢&nbsp;&nbsp;5座&nbsp;&nbsp;自动
+                三厢&nbsp;&nbsp;${car.seats}座&nbsp;&nbsp;自动
                 <a href="javascript:;" id="carDetail" class="view-car-para"
                    data-cid="{'cartypeList':[191],'groupId':0}">车辆详情&gt;</a>
             </div>
@@ -130,7 +130,7 @@
     </div>
 </div>
 <script>
-    var carname = '${carName}';
+    var carname = '${car.name}';
     var countdown = function(){
         setTimeout(function (){
             $("#carinfo").css('display','block');

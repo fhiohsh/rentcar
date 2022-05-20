@@ -16,9 +16,10 @@ public class ShopController {
     @Autowired
     private ShopService shopService;
 
-    @RequestMapping("/allshop")
+    @RequestMapping("/toShop")
     public String toShops(){
-        return "shops";
+        return "shopCars";
     }
+
 
 }

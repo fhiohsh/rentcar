@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Fh
-  Date: 2022/5/4
-  Time: 18:06
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -31,7 +24,7 @@
     <li><a href="">个人中心</a><span></span></li>
 </ul>
 <div class="clear_fix"></div>
-<div class="crumbp"> <a href="#">首页</a> <em>&gt;</em> <span>个人二手车</span> </div>
+<div class="crumbp"> <a href="#">首页</a> <em>&gt;</em> <span>租车</span> </div>
 <div class="mainbox">
     <div class="citychange citychange2">
         <%@ include file="common/cityopt.jsp"%>

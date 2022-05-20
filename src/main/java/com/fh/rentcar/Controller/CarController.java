@@ -2,6 +2,7 @@ package com.fh.rentcar.Controller;
 
 import com.fh.rentcar.pojo.Cars;
 import com.fh.rentcar.pojo.City;
+import com.fh.rentcar.pojo.Shops;
 import com.fh.rentcar.pojo.Street;
 import com.fh.rentcar.service.CarsService;
 import com.fh.rentcar.service.CityService;
@@ -61,7 +62,7 @@ public class CarController {
     }
 
     /**
-     * 根据车名和城市查门店
+     * 根据车名和城市查 车所属门店
      *
      */
     @RequestMapping("/carShops/{city}/{cname}")
@@ -79,6 +80,19 @@ public class CarController {
         model.addAttribute("car",cars);
         model.addAttribute("citys",city);
         return "carInfo";
+    }
+    /**
+     * 根据门店id
+     */
+    @RequestMapping("/shopsCar/{sid}")
+    public String optCarListByShop(@PathVariable("sid") int sid,Model model){
+        HashMap<String,Object> condition = new HashMap<String, Object>();
+        condition.put("shop_id",sid);
+        List<Cars> carsList = carsService.findCarByCondition(condition);
+        Shops shop = shopService.getShopById(sid);
+        model.addAttribute("shopCarList",carsList);
+        model.addAttribute("shop",shop);
+        return "shopCars";
     }
 
 

@@ -147,7 +147,7 @@
             '<p style="line-height:1.5;font-size:13px;">${shop.address}-${shop.city.name}${shop.street.name}</p>' +
             '<div style=""><p style="line-height:1.5;font-size:13px;">营业时间：<b>${shop.business_hours}</b></p>' +
             '<p style="line-height:1.5;font-size:13px;">门店电话：<b>${shop.phone}</b></p></div>' +
-            '<div style="text-align:right;"><a href="" style="color:#23b7b7; font-weight: bolder;font-size: 14px;">查看门店>></a></div>';
+            '<div style="text-align:right;"><a href="/cars/shopsCar/${shop.id}" style="color:#23b7b7; font-weight: bolder;font-size: 14px;">查看门店>></a></div>';
         addinfo(cons, marker[${i.index}]);
          console.log(${i.index});
         //q++;
@@ -173,7 +173,7 @@
                    '<p style="line-height:1.5;font-size:13px;">${shop.address}-${shop.city.name}${shop.street.name}</p>' +
                    '<div style=""><p style="line-height:1.5;font-size:13px;">营业时间：<b>${shop.business_hours}</b></p>' +
                    '<p style="line-height:1.5;font-size:13px;">门店电话：<b>${shop.phone}</b></p></div>' +
-                   '<div style="text-align:right;"><a href="" style="color:#23b7b7; font-weight: bolder;font-size: 14px;">查看门店>></a></div>';
+                   '<div style="text-align:right;"><a href="/cars/shopsCar/${shop.id}" style="color:#23b7b7; font-weight: bolder;font-size: 14px;">查看门店>></a></div>';
                var infoWindows = new BMap.InfoWindow(cons);
                // infoWindow.open(marker[i]);
                var points = '${shop.point}';

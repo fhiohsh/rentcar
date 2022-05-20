@@ -13,7 +13,7 @@
 <%@ include file="common/header.jsp"%>
 <ul class="navmenu">
     <li class="active"><a href="">首页</a><span></span></li>
-    <li><a href="">租车</a><span></span></li>
+    <li><a href="/cars/shopsCar/1201">租车</a><span></span></li>
     <li><a href="/cars/pages/1">车型查询</a><span></span></li>
     <li><a href="/shop">营业网点</a><span></span></li>
     <li><a href="">个人中心</a><span></span></li>

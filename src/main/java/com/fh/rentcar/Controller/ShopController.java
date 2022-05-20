@@ -5,6 +5,7 @@ import com.fh.rentcar.service.CityService;
 import com.fh.rentcar.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ShopController {
@@ -14,5 +15,10 @@ public class ShopController {
     private CarsService carsService;
     @Autowired
     private ShopService shopService;
+
+    @RequestMapping("/allshop")
+    public String toShops(){
+        return "shops";
+    }
 
 }

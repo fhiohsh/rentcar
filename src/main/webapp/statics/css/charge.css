@@ -13,14 +13,32 @@ a{
 .header-box{ margin:auto; width:1180px; height:80px;border-bottom: 1px #e8dada solid;}
 .top-logo{ background:url(../images/logocars.png) no-repeat 0px 59px; width: 200px; height: 180px; background-size: contain; display: inline-block; margin-top: -105px;}
 .top-banner{ width:662px; height:30px; float:right; margin-top:30px;}
-.login-box{ width:400px; text-align:right;  float:left;}
+.login-box{ width:400px; text-align:right;  float:left;font-size: 14px;}
 .login-manger { width: auto; float:right;}
 .login-box a{cursor: pointer;display:inline-block; margin:0 5px; color:#23b7b7; height:25px; line-height:25px; font-weight:bolder;}
 .login-box a:hover{ text-decoration:underline;}
-.login-box span{ height:25px; display:inline-block; line-height:25px;}
+.login-box span{ height:25px; display:inline-block; line-height:25px;margin-top: 1px;}
+.login-box .userShow p{
+    display: inline-block;
+    margin: 0 5px;
+    color: #23b7b7;
+    height: 25px;
+    line-height: 25px;
+    font-weight: bolder;
+}
+.login-box .userShow a.userShowInfo{
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 5px;
+    color: #23b7b7;
+    height: 25px;
+    line-height: 25px;
+    font-weight: bolder;
+}
+
 
 .top-menu-box{ width:262px; height:30px; float:right; text-align:right; position:relative; }
-.top-menu-box a{ display:inline-block; margin:0 5px; color:#666; height:25px; line-height:25px;}
+.top-menu-box a{display:inline-block; margin:0 5px; color:#666; height:25px; line-height:25px;}
 .top-menu-box a:hover{ text-decoration:underline;}
 .top-menu-box span{ height:25px; display:inline-block; line-height:25px;}
 .top-menu-box .contact-us{ width:78px; border:1px solid #fff; background:url(../images/contact_bg.png) no-repeat 92px 12px; padding-left:10px; padding-right:20px; margin-right:5px; color:#23b7b7; cursor:pointer; height:23px;}

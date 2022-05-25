@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="/statics/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="/statics/css/loginstyle.css">
     <link rel="stylesheet" type="text/css" href="/statics/css/base.css" />
     <link rel="stylesheet" type="text/css" href="/statics/css/home.css" />
     <link rel="stylesheet" type="text/css" href="/statics/city/city.css">
@@ -9,10 +11,12 @@
     <link rel="stylesheet" type="text/css" href="/statics/css/self.css">
     <link rel="stylesheet" type="text/css" href="/statics/css/hurst.css">
     <link rel="stylesheet" type="text/css" href="/statics/css/datecaculate.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/loginstyle.css">
+
+
+
     <script type="text/javascript" src="/statics/script/jquery-1.8.0.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/statics/script/city3.js"></script>
-
+    <script type="text/javascript" src="/statics/layui/layui.js"></script>
     <title>Title</title>
 </head>
 <body>
@@ -71,20 +75,23 @@
 </div>
 <div class="mainbox main2">
     <div id="carinfo" style="display: none">
-        <c:forEach var="shop" items="${carShopList}">
+        <c:forEach var="cars" items="${carShopList}">
             <div class="shops" style="">
                 <div class="store-info">
-                    <p>${shop.shops.name}</p>
-                    <span>${shop.city.name}${shop.street.name}${shop.shops.address}</span>
+                    <p>${cars.shops.name}</p>
+                    <span>${cars.city.name}${cars.street.name}${cars.shops.address}</span>
                 </div>
-<%--                <div class="store-price">--%>
-<%--                    ￥ 83--%>
-<%--                    <i>/日均</i>--%>
-<%--                </div>--%>
+                <div class="store-price">
+                    ￥ ${cars.rentprice}
+                    <i>/天</i>
+                </div>
                 <div class="store-btn">
                     <a href="javascript:;" class="bookcar"><span>预  定</span></a>
                 </div>
             </div>
+            <input type="hidden" id="rentprice" name="rentprice" value="${cars.rentprice}">
+                <input type="hidden" id="carId" name="car_id" value="${cars.id}">
+                <input type="hidden" id="shopId" name="shopId" value="${cars.shops.id}">
         </c:forEach>
     </div>
     <div class="carwrap">
@@ -115,20 +122,32 @@
     <div id="modal-content">
         <!-- <img src="img\car1.jpg" alt="" style="width: 500px;height: 500px;"> -->
         <div id="neirong-1">
-            <form action="" class="">
-                <div class="denglu">预约时间</div>
+            <form action="/Order/SecondStep" id="orderCarInfo" method="post">
+<%--                <div class="denglu">预约时间</div>--%>
                 <div id="time">
-                    <div id="yhu">取车时间: <input type="date" name="picktime" id="curtime"></div>
-                    <div id="pas">还车时间: <input type="date" name="returntime" id="backtime"></div>
+                    <div id="yhu">取车时间: <input type="date" name="pickcartime" id="curtime"></div>
+                    <div id="pas">还车时间: <input type="date" name="returncartime" id="backtime"></div>
                 </div>
-                <a href="/topay" id="qued">预定</a>
-                <span id="orderday"></span>
-                <input type="hidden" id="newtime" name="newtime" value>
+
+<%--                <span id="orderday"></span>--%>
+                <input type="hidden" id="OrderShopId" name="shop_id" value>
+                <input type="hidden" id="OrderUserId" name="uid" value="70">
+                <input type="hidden" id="OrderCarId" name="car_id" value>
+                <input type="hidden" id="rentTime" name="renttime" value>
+                <input type="hidden" id="OrderPrice" name="rentprice" value>
+                <input type="hidden" name="deposit" value="4000">
+                <input type="hidden" name="renttype" value="微信支付">
+                <input type="hidden" name="rentfrom" value="PC客户端">
+
+                    <a href="#" id="qued"><div class="layui-btn-container">
+                        <button type="button" class="layui-btn layui-btn-lg" style="font-size: 23px;">预定</button>
+                    </div></a>
             </form>
         </div>
-        <span id="close" class="loginclosedate">&times;</span>
+<%--        <span id="close" class="loginclosedate">&times;</span>--%>
     </div>
 </div>
+<script type="text/javascript" src="/statics/script/datecau.js"></script>
 <script>
     var carname = '${car.name}';
     var countdown = function(){
@@ -142,17 +161,62 @@
 
     $(".bookcar").click(function () {
 
-        $(".bg110").show();
-        $("#modal").fadeIn();
+        // $(".bg110").show();
+        // $("#modal").fadeIn();
+        layer.open({
+            title:'选择日期',
+            type: 1,
+            skin: 'layui-layer-demo', //样式类名
+            closeBtn: 1, //不显示关闭按钮
+            anim: 2,
+            overflow:0,
+            area: ['380px', '390px'],
+            shadeClose: true, //开启遮罩关闭
+            content: $("#modal")
+        });
     });
     $(".loginclosedate").click(function () {
         $(".bg110").hide();
         $("#modal").fadeOut();
     });
+
+    //结束时间
+    $("#backtime").change(function () {
+        var start = document.getElementById('curtime').value;//开始日期
+        var stime = formatDate(start);
+
+        var b = document.getElementById('backtime').value;
+        var etime = formatDate(b);
+        // $("#backtime").attr("value", $(this).val()); //赋值
+        // var ins = document.getElementById('backtime').value;
+        document.getElementById('OrderPrice').value= document.getElementById('rentprice').value;
+        document.getElementById('OrderCarId').value= document.getElementById('carId').value;
+        document.getElementById('OrderShopId').value=document.getElementById('shopId').value;
+        document.getElementById('rentTime').value=getDaysBetween(stime, etime);
+        return etime;
+    });
+    $("#qued").on('click', function () {
+        var serverTime = new Date().getTime();//系统时间
+        var start = document.getElementById('curtime').value;//开始日期
+        var b = document.getElementById('backtime').value;//结束日期
+        // 赋值
+        var st = new Date(start);
+        var end = new Date(b);
+        if(st.getTime() < serverTime){
+            layer.msg("选择合适的日期");
+        }else if(end.getTime() < st.getTime()){
+            layer.msg("结束日期不合理");
+        }else if(start === ''){
+            layer.msg("请选择日期");
+        }else{
+            $("#orderCarInfo").submit();
+        }
+
+    });
 </script>
 <div class="clear_fix"></div>
 
-<script type="text/javascript" src="/statics/script/datecau.js"></script>
+
 <%@ include file="common/footer.jsp"%>
 </body>
 </html>

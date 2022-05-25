@@ -12,6 +12,8 @@ public interface CarsMapper {
 
     List<Cars> getAllCars();
 
+
+
     List<Cars> getCarsByName(String carName);
 //    Cars getCarsById(Integer carId);
 
@@ -19,4 +21,7 @@ public interface CarsMapper {
     List<Cars> findCarByCondition(Map<String,Object> objectMap);
     //车名
     Cars carByName(String cname);
+
+    //id
+    Cars getCarByCarId(int carId);
 }

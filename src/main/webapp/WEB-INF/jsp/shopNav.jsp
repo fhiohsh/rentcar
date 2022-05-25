@@ -5,6 +5,8 @@
     <title>风车车</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/statics/layui/css/layui.css">
+    <script type="text/javascript" src="/statics/layui/layui.js"></script>
     <%@ include file="common/path.jsp"%>
 </head>
 <body>

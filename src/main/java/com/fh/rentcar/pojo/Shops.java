@@ -12,7 +12,7 @@ public class Shops {
     private int id;
     private String name;
     private String phone;
-    private Date Business_hours;
+    private String Business_hours;
     private String address;
     private String point;
 

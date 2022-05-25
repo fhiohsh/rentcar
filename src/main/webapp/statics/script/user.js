@@ -37,7 +37,7 @@ layui.use('util', function () {
         if (serverTime == endTime || serverTime > endTime) {
             console.log('123');
             layer.open({
-                title: '<div style="color:#black">完成</div>',
+                title: '<div style="color:#000">完成</div>',
                 content: '您的租期已到，请您及时还车！'
             });
 

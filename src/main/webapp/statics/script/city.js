@@ -226,15 +226,15 @@ var words = 'ABCDEFGHJKLMNPQRSTWXYZ';
 			citylist.append (tr);
 		});
 
-		var scrollBody = $('div.scrollBody')[0];
-		if (!$.browser.mozilla)
-        {
-			scrollBody.onmousewheel = function (e) { mouseWheel (e, false, tableList, bar, len, bargap); };
-        }
-	    else
-	    {
-	    	scrollBody.addEventListener ('DOMMouseScroll', function (e) { mouseWheel (e, true, tableList, bar, len, bargap) }, false); 
-		}
+		// var scrollBody = $('div.scrollBody')[0];
+		// if (!$.browser.mozilla)
+        // {
+		// 	scrollBody.onmousewheel = function (e) { mouseWheel (e, false, tableList, bar, len, bargap); };
+        // }
+	    // else
+	    // {
+	    // 	scrollBody.addEventListener ('DOMMouseScroll', function (e) { mouseWheel (e, true, tableList, bar, len, bargap) }, false);
+		// }
     });
     
     var INDEX = 0;

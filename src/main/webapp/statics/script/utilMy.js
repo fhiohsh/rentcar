@@ -7,10 +7,14 @@ $(".loginclose").click(function () {
     $(".loginpop").fadeOut();
 });
 $('.messagegg a').click(function() {
-    $('.loginpop .form form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+    $('.loginpop .form div').animate({ height: "toggle", opacity: "toggle" }, "slow");
 });
 
 
+$(".contact-us").hover(function () {
+    $(".contact-popup").show();}, function () {
+    $(".contact-popup").css('display','none');
+});
 
 
 $(function () {

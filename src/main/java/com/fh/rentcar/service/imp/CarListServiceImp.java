@@ -34,4 +34,9 @@ public class CarListServiceImp implements CarsService {
     public Cars carByName(String cname) {
         return carsMapper.carByName(cname);
     }
+
+    @Override
+    public Cars getCarByCarId(int carId) {
+        return carsMapper.getCarByCarId(carId);
+    }
 }

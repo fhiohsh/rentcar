@@ -20,4 +20,7 @@ public interface CarsService {
 
     //车名查车
     Cars carByName(String cname);
+
+    //id
+    Cars getCarByCarId(int carId);
 }

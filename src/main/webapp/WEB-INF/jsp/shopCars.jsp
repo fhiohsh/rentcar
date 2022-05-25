@@ -9,6 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="/statics/layui/css/layui.css">
+    <script type="text/javascript" src="/statics/layui/layui.js"></script>
     <link rel="stylesheet" type="text/css" href="/statics/css/base.css" />
     <link rel="stylesheet" type="text/css" href="/statics/css/home.css" />
     <link rel="stylesheet" type="text/css" href="/statics/city/city.css">

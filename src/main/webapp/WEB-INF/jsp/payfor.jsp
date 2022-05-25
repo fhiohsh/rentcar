@@ -8,10 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="/statics/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="/statics/css/loginstyle.css">
     <link rel="stylesheet" type="text/css" href="/statics/css/charge.css">
     <link rel="stylesheet" type="text/css" href="/statics/css/self.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/loginstyle.css">
+
+
     <script type="text/javascript" src="/statics/script/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="/statics/layui/layui.js"></script>
     <title>订单明细</title>
 </head>
 <body>
@@ -34,25 +38,26 @@
         <div class="step2-box-left">
             <div class="order-info-box">
                 <div class="car-image-box">
-                    <img src="https://externalimage.1hai.cn/cartype/ea953fb306b970b9a435e426909c3a67.png"
+                    <img src="/statics/images/${ordetails.car.img}"
                          alt="大众朗逸">
-                    <span>租 期：<em id="rentprice"></em>天</span>
+                    <span>租 期：<em>${ordetails.renttime}</em>天</span>
                 </div>
 
                 <div class="store-info-box">
                     <div class="car-name">
                         <a class="revise-back" href="/BrandStep2/421?carBrandId=2" target="_self"
                            title="修改">修改订单</a>
-                        大众朗逸
+                        ${ordetails.car.name}
                         <a class="car-info" href="javascript:void(0);"
                            data-cid="{'cartypeList':[421],'groupId':0}" id="cartypedetail">车辆详情&gt;</a>
                     </div>
                     <ul>
-                        <li><span class="store-title">取车地点</span><span class="store-title">还车地点</span></li>
-                        <li><span>取车门店：上海神旺大酒店送车点</span><span>还车门店：上海神旺大酒店送车点</span></li>
-                        <li><span>取车时间：2022-04-27 10:00</span><span>还车时间：2022-04-29 10:00</span></li>
-                        <li><span>取车地址：上海上海市徐汇区宜山路650号</span><span>还车地址：上海上海市徐汇区宜山路650号</span></li>
-                        <li style="padding-top: 5px;"><span class="store-title">订单说明：</span></li>
+                        <li><span class="store-title">取车地点</span><span class="store-title">还车地点(可自行选择)</span></li>
+                        <li><span>取车门店：${ordetails.shop.city.name}${ordetails.shop.name}</span><span>建议还车门店：${ordetails.shop.city.name}${ordetails.shop.name}</span></li>
+                        <li><span>取车时间：${ordetails.pickcartime}</span><span>还车时间：${ordetails.returncartime}</span></li>
+                        <li><span>取车地址：${ordetails.shop.city.name}${ordetails.shop.street.name}${ordetails.shop.address}</span></li>
+                        <li style="padding-top: 5px;"><span class="store-title">订单说明：
+                        </span></li>
                         <li class="rule-toggle">不限公里数，超时费按车辆租赁费及门店服务费均价÷6收取实际超期小时费 (部分0元活动订单，按照40元/小时进行收取)。<a
                                 href="javascript:void(0);" id="gz">退改规则</a></li>
                         <li style="color: red;">温馨提示：<a
@@ -74,7 +79,7 @@
                 <ul>
                     <li class="line-clear" id="baseRatePrice">
                         <em class="price-drop">
-                            ￥142<i class="price-drop-open" style="display: block;"></i>
+                            ￥${ordetails.rentprice}<i class="price-drop-open" style="display: block;"></i>
                             <i class="price-drop-close" style="display: none;"></i>
                         </em>车辆租赁费及门店服务费
                     </li>
@@ -108,7 +113,7 @@
                 <div class="price-box" id="totalAmount">
                     <span class="sub-load hidelable" id="priceloading"></span>
                     <span class="price-txt" id="priceTitle">总计:</span>
-                    <span class="price-total" id="priceTotal"><em>￥</em>262</span>
+                    <span class="price-total" id="priceTotal"><em>￥</em>${ordetails.rentprice}</span>
                 </div>
 
                 <div class="price-btnbox">
@@ -133,14 +138,21 @@
     <img src="/statics/images/qrcode.png" alt="">
     <span style="position: absolute;font-size: 27px;right: 20px;top: 30px;">扫码支付</span>
     <span style="position: absolute;font-size: 17px;right: 20px;top:270px;color: #EB5A01;">
-        已<a href="/paysuccess">支付</a>完成？
+        已<a href="javascript:;" id="payforOrder">支付</a>完成？
             <a href="/usercenter" style="color: #4ab8b4;" target="_blank">点击查看订单</a>  </span>
+    <form action="/Order/addorder" method="post" id="payforOrderForm">
+        <input type="hidden" name="orderstatus" value="2">
+        <input type="hidden" name="pickaddress" value="${ordetails.shop.city.name}${ordetails.shop.name}">
+    </form>
 </div>
 <script>
 
     $(".btnSubmit").click(function () {
         $(".bg110").show();
         $(".paycode").fadeIn();
+    });
+    $("#payforOrder").click(function () {
+        $('#payforOrderForm').submit();
     });
 </script>
 <%@ include file="common/footer.jsp"%>

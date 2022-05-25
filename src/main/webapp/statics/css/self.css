@@ -15,7 +15,9 @@ color: #23b7b7;
 /* 验车单 */
 .bg110{ 
     position:fixed;
-    left:0;top:0;width:100%; height:100%; z-index:98; background:url(../images/black60.png);
+    left:0;top:0;width:100%; height:100%; z-index:98;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.3;
     display: none;}
 .logindemoBg{
     position: fixed;

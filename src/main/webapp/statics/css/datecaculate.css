@@ -1,28 +1,29 @@
 #modal {
-    width: 100%;
-    height: 100%;
+    width: 360px;
+    height: 300px;
     /* 默认隐藏 */
     display: none;
+    position: relative;
+
     /* 固定定位 */
-    position: fixed;
+    /*position: fixed;*/
     /* 设置在顶层 */
-    z-index: 1000;
+    /*z-index: 1000;*/
     /* 设置位置 */
     left: 0;
-    top: 0;
-    overflow: auto;
+    top: -129px;
 
 }
 /* 弹窗内容 */
 
 #modal-content {
     position: relative;
-    background-color: #fff;
+    /*background-color: #fff;*/
     margin: 10% auto;
-    border: 1px solid #888;
+    /*border: 1px solid #888;*/
     width: 360px;
-    height: 320px;
-    z-index: 1001;
+    height: 280px;
+    /*z-index: 1001;*/
 }
 
 .denglu {
@@ -30,6 +31,7 @@
     top: 50px;
     right: 125px;
     font-size: 25px;
+    color: #fff;
 }
 
 #yhu {
@@ -38,28 +40,33 @@
     height: 35px;
     top: 120px;
     right: 80px;
+ color: #000;
     font-size: 19px;
 }
-
+#yhu input{
+    background: none;
+}
 #pas {
     position: absolute;
     top: 180px;
     right: 80px;
     font-size: 19px;
+    color: #000;
 }
-
+#pas input{
+    background: none;
+}
 #qued {
     position: absolute;
     /* letter-spacing: 15px; */
-    width: 170px;
-    height: 35px;
-    top: 240px;
-    right: 80px;
+    /*width: 170px;*/
+    /*height: 35px;*/
+    top: 260px;
+    right: 114px;
     font-size: 20px;
     font-weight: bold;
-    border-radius: 30px;
+    /*border-radius: 30px;*/
     text-align: center;
-    background-color: aqua;
     text-decoration: none;
 }
 
@@ -85,7 +92,7 @@
     position: absolute;
     margin-left: 100px;
     width: 240px;
-    height: 35px;
+    /*height: 35px;*/
     top: 280px;
     right: 60px;
     font-size: 18px;

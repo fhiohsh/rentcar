@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="/statics/layui/css/layui.css">
@@ -61,7 +62,7 @@
                         <li class="rule-toggle">不限公里数，超时费按车辆租赁费及门店服务费均价÷6收取实际超期小时费 (部分0元活动订单，按照40元/小时进行收取)。<a
                                 href="javascript:void(0);" id="gz">退改规则</a></li>
                         <li style="color: red;">温馨提示：<a
-                                href="https://www.1hai.cn/NewHelp/HelpContent?menuId=20&amp;isLimitRules=True#77"
+                                href=""
                                 title="限行城市规则" style="color: red;" target="_blank">点击阅读限行城市规则</a></li>
                     </ul>
                 </div>
@@ -85,19 +86,19 @@
                     </li>
                     <!--基本保障服务费-->
                     <li>
-                        <em class="price-mid ">￥100</em>基本保障服务费
+                        <em class="price-mid ">￥0</em>基本保障服务费
                         <span></span>
-                        <span style="color:#666">基本保障服务费50元 * 2天</span>
+                        <span style="color:#666">基本保障服务费限时免费</span>
                     </li>
                     <li id="servicePriceList">
                         <em class="price-drop">
-                            ￥20
+                            ￥0
                             <i class="price-drop-open" style="display: block;"></i>
                             <i class="price-drop-close" style="display: none;"></i>
                         </em>其它服务费
                         <div class="price-drop-box" id="serviceList" style="display: none;">
                             <span>
-                                <p class="orange">￥20</p>
+                                <p class="orange">￥0</p>
                                 <p>手续费</p>
                             </span>
                         </div>
@@ -111,15 +112,27 @@
                     <p>违章押金<em>（可退）</em><span>￥2000</span></p>
                 </div>
                 <div class="price-box" id="totalAmount">
-                    <span class="sub-load hidelable" id="priceloading"></span>
                     <span class="price-txt" id="priceTitle">总计:</span>
                     <span class="price-total" id="priceTotal"><em>￥</em>${ordetails.rentprice}</span>
                 </div>
+                <div class="price-box" id="totalAmount">
+                <span class="price-txt" >订金:</span>
+                <span class="price-total" id="depositCar"><em>￥</em>2000</span>
+            </div>
+                <c:choose>
+                    <c:when test="${not empty sessionScope.user && !(sessionScope.user eq null)}">
+                        <div class="price-btnbox">
+                            <a href="javascript:;" title="支付定金" id="btnSubmit" class="btnSubmit">支付订金</a>
+                            <span class="sub-load hidelable" id="loading"></span>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="price-btnbox">
+                            <a href="javascript:;" title="提交订单" id="nologins">支付订金</a>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
 
-                <div class="price-btnbox">
-                    <a href="javascript:;" title="提交订单" id="btnSubmit" class="btnSubmit">提交订单</a>
-                    <span class="sub-load hidelable" id="loading"></span>
-                </div>
                 <div class="price-help">
                     <p style="display:none; border-bottom: 1px dashed #EB5A01; padding-bottom: 5px; margin-bottom: 5px;">
                         <b>此单可参加周年庆返现活动，您需支付整单金额，返还金额（基本租车费的50%）将在还车后3-5个工作日退还至您的一卡行账户</b>
@@ -136,23 +149,81 @@
 
 <div class="paycode" style="z-index: 99;;display: none;width:400px;height: 300px;background: #fff;position: absolute;top: 150px;left: 40%;">
     <img src="/statics/images/qrcode.png" alt="">
-    <span style="position: absolute;font-size: 27px;right: 20px;top: 30px;">扫码支付</span>
+    <span style="position: absolute;font-size: 27px;right: 7px;top: 30px;">扫码支付定金</span>
     <span style="position: absolute;font-size: 17px;right: 20px;top:270px;color: #EB5A01;">
         已<a href="javascript:;" id="payforOrder">支付</a>完成？
             <a href="/usercenter" style="color: #4ab8b4;" target="_blank">点击查看订单</a>  </span>
     <form action="/Order/addorder" method="post" id="payforOrderForm">
         <input type="hidden" name="orderstatus" value="2">
+        <input type="hidden" id="OrderUserId" name="uid" value="${sessionScope.user.id}">
         <input type="hidden" name="pickaddress" value="${ordetails.shop.city.name}${ordetails.shop.name}">
     </form>
 </div>
+<span class="layui-layer-shad"></span>
 <script>
 
+
+    function closeLoad(index) {
+        layer.close(index);
+    }
+    $("#nologins").click(function () {
+        layer.msg('请稍候...', {
+            icon: 16,
+            shade: [0.5, '#f5f5f5'],
+            scrollbar: false,
+            offset: 'auto',
+            time:800},function () {
+            layer.alert('您还未登录！', {title:'error',icon: 4},function (index) {
+
+                $(".bg110").show();
+                $(".loginpop").toggle();
+                layer.close(index);
+            });
+        });
+    });
     $(".btnSubmit").click(function () {
-        $(".bg110").show();
-        $(".paycode").fadeIn();
+        layer.msg('请稍候...', {
+            icon: 16,
+            shade: [0.5, '#f5f5f5'],
+            scrollbar: false,
+            offset: 'auto',
+            time:800},function () {
+                $(".bg110").show();
+                $(".paycode").fadeIn();
+        });
+
     });
     $("#payforOrder").click(function () {
-        $('#payforOrderForm').submit();
+
+        $(".paycode").fadeOut();
+        $(".bg110").css('display','none');
+        layer.msg('正在验证支付结果，请稍候...', {
+            icon: 16,
+            shade: [0.5, '#f5f5f5'],
+            scrollbar: false,
+            offset: 'auto',
+            time:2000},function () {
+            layer.alert('支付成功！', {title:'支付信息',icon: 1},function () {
+                $('#payforOrderForm').submit();
+            });
+        });
+
+        // layer.msg('查验支付结果', {
+        //     offset: 'auto',
+        //     icon: 1,
+        //     time: 3000 //2秒关闭（如果不配置，默认是3秒）
+        // }, function(){
+        //     // $('#payforOrderForm').submit();
+        //     location.reload();
+        // });
+
+        // layui.use('layer', function () {
+        //     layui.layer.load();
+        //     $(".layui-layer-shade").css('background', '#000000')
+        //     $(".layui-layer-shade").css('opacity', '0.2')
+        // });
+
+        // $('#payforOrderForm').submit();
     });
 </script>
 <%@ include file="common/footer.jsp"%>

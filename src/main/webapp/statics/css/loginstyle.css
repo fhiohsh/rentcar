@@ -61,6 +61,16 @@
 .loginpop .form button:hover,.form button:active,.form button:focus {
     background: #43A047;
 }
+
+.shiftlogin p.messagegg{
+    margin-top: 15px;
+}
+.shiftlogin p.messagegg a{
+color: #000;
+}
+.shiftlogin p.messagegg a:hover{
+    color: #23b7b7;
+}
 .loginpop .form .message {
     margin: 10px 0 0;
     color: #b3b3b3;

@@ -1,17 +1,4 @@
-$("#verform").click(function () {
-    $(".bg110").hide();
-    $(".logindemoBg").fadeOut();
-    $("#verform").submit();
-});
 
-$(".cs-q1").click(function () {
-    $(".bg110").show();
-    $(".logindemoBg").fadeIn();
-});
-$(".closeBg").click(function () {
-    $(".bg110").hide();
-    $(".logindemoBg").fadeOut();
-});
 
 //倒计时
 var iptVa = document.getElementById('test1').value
@@ -43,15 +30,6 @@ layui.use('util', function () {
 
         }
     });
-});
-
-
-$("#adform").click(function () {
-    $(".logindemoBg2").fadeOut();
-    $("#adform").submit();
-});
-$(".cs-q3").click(function () {
-    $(".logindemoBg2").fadeIn();
 });
 
 // curtime

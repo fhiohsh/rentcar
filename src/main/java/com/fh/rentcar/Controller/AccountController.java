@@ -2,6 +2,7 @@ package com.fh.rentcar.Controller;
 
 import com.fh.rentcar.pojo.User;
 import com.fh.rentcar.service.UserService;
+import com.fh.rentcar.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,8 @@ public class AccountController {
         return "usercenter";
     }
 
+
+
     //用户注销
     @RequestMapping("/logout")
     @ResponseBody
@@ -34,14 +37,53 @@ public class AccountController {
         maps.put("result","logout");
         return maps;
     }
+    //注册
+    @RequestMapping("/register")
+    @ResponseBody
+    public Map<String,Object> userRegister(User user){
+        HashMap<String,Object> maps = new HashMap<String, Object>();
+        HashMap<String,Object> keymap = new HashMap<String, Object>();
+        HashMap<String,Object> keymap2 = new HashMap<String, Object>();
+        HashMap<String,Object> keymap3 = new HashMap<String, Object>();
 
+        String uname = user.getUsername();
+        String uphone = user.getPhone();
+        String uemail = user.getEmail();
+        String upwd = user.getPassword();
+        String mdpwd = MD5Util.md5(upwd);
+        //加密
+        user.setPassword(mdpwd);
+        //存放键值对
+        keymap.put("phone", uphone);
+        keymap2.put("email", uemail);
+        keymap3.put("username", uname);
+        User userphone = userService.selectUserByPhone(keymap);
+        User userEmail = userService.selectUserByEmail(keymap2);
+        User userName = userService.selectUserByUserName(keymap3);
+        if(userName != null){
+            maps.put("result","RepeatUserName");
+        }
+        else if(userphone != null){
+            maps.put("result","RepeatNumber");
+        }
+        else if(userEmail != null){
+            maps.put("result","RepeatEmail");
+        }else{
+            if(userService.register(user) != 0){
+                maps.put("result","oks");
+            }else{
+                maps.put("result","fail");
+            }
+        }
+        return maps;
+    }
     //用户登录
     @RequestMapping("/login")
     @ResponseBody
     public Map<String,Object> login(Map<String, Object> map, User user, HttpSession session, HttpServletRequest request){
 
         String username = user.getUsername();
-        String psd = user.getPassword();
+        String psd =MD5Util.md5(user.getPassword());
         //判断是邮箱还是手机号的正则表达式
         String email = "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
         String phone = "^[1][34578]\\d{9}$";

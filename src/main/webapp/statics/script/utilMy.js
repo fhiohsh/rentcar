@@ -6,6 +6,7 @@ $(".loginclose").click(function () {
     $(".bg110").hide();
     $(".loginpop").fadeOut();
 });
+
 $('.messagegg a').click(function() {
     $('.loginpop .form div').animate({ height: "toggle", opacity: "toggle" }, "slow");
 });

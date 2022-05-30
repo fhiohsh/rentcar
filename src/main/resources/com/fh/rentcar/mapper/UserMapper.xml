@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fh.rentcar.mapper.UserMapper">
+
+    <insert id="register" parameterType="com.fh.rentcar.pojo.User">
+        insert into user_info(username,password,phone,email) values (#{username},#{password},#{phone},#{email})
+    </insert>
+
+    <select id="selectOne" parameterType="java.util.Map" resultType="com.fh.rentcar.pojo.User">
+        select * from user_info
+        <trim prefix="where" prefixOverrides="and|or">
+
+            <if test="username != null">
+                username = #{username}
+            </if>
+            <if test="phone != null">
+                and phone = #{phone}
+            </if>
+            <if test="email != null">
+                and email = #{email}
+            </if>
+            <if test="password != null">
+                and password = #{password}
+            </if>
+        </trim>
+    </select>
+
+</mapper>

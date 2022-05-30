@@ -9,4 +9,7 @@ public interface UserService {
     User selectUserByPhone(Map<String,Object> UserMap);
     User selectUserByEmail(Map<String,Object> UserMap);
     User selectUserByUserName(Map<String,Object> UserMap);
+
+    //注册
+    int register(User user);
 }

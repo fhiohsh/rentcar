@@ -11,9 +11,7 @@ import com.fh.rentcar.util.TimeFormats;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +29,12 @@ public class OrderController {
 
 
     OrderDetail orderDetails=null;
+
+    @RequestMapping("/orderforit")
+    @ResponseBody
+    public String jumpsuc(){
+        return "Success";
+    }
 
     @RequestMapping("/topay")
     public String payFor(){
@@ -60,7 +64,7 @@ public class OrderController {
         if(orderDetails == null){
             System.err.println("对象为空，异常哟");
         }else{
-            orderDetails.setId(100001);
+            orderDetails.setUid(order.getUid());
             orderDetails.setPickaddress(order.getPickaddress());
             orderDetails.setOrderstatus(order.getOrderstatus());
             orderDetails.setOrdertime(TimeFormats.datetime());

@@ -131,13 +131,13 @@
 
 <%--                <span id="orderday"></span>--%>
                 <input type="hidden" id="OrderShopId" name="shop_id" value>
-                <input type="hidden" id="OrderUserId" name="uid" value="70">
+
                 <input type="hidden" id="OrderCarId" name="car_id" value>
                 <input type="hidden" id="rentTime" name="renttime" value>
                 <input type="hidden" id="OrderPrice" name="rentprice" value>
                 <input type="hidden" name="deposit" value="4000">
-                <input type="hidden" name="renttype" value="微信支付">
-                <input type="hidden" name="rentfrom" value="PC客户端">
+                <input type="hidden" name="renttype" value="门店支付">
+                <input type="hidden" name="rentfrom" value="PC">
 
                     <a href="#" id="qued"><div class="layui-btn-container">
                         <button type="button" class="layui-btn layui-btn-lg" style="font-size: 23px;">预定</button>

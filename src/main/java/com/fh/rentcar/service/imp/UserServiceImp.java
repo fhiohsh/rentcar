@@ -21,11 +21,7 @@ public class UserServiceImp implements UserService {
         HashMap<String,Object> condition = new HashMap<String, Object>();
         condition.put("phone",UserMap.get("phone"));
         condition.put("password",UserMap.get("password"));
-        User user = userMapper.login(condition);
-        if(user == null){
-            System.out.println("手机号或密码错误");
-        }
-        return user;
+        return userMapper.selectOne(condition);
     }
 
     @Override
@@ -33,11 +29,7 @@ public class UserServiceImp implements UserService {
         HashMap<String,Object> condition2 = new HashMap<String, Object>();
         condition2.put("email",UserMap.get("email"));
         condition2.put("password",UserMap.get("password"));
-        User user = userMapper.login(condition2);
-        if(user == null){
-            System.out.println("邮箱或密码错误");
-        }
-        return user;
+        return userMapper.selectOne(condition2);
     }
 
     @Override
@@ -45,10 +37,11 @@ public class UserServiceImp implements UserService {
         HashMap<String,Object> condition3 = new HashMap<String, Object>();
         condition3.put("username",UserMap.get("username"));
         condition3.put("password",UserMap.get("password"));
-        User user = userMapper.login(condition3);
-        if(user == null){
-            System.out.println("用户名或密码错误");
-        }
-        return user;
+        return userMapper.selectOne(condition3);
+    }
+
+    @Override
+    public int register(User user) {
+         return userMapper.register(user);
     }
 }

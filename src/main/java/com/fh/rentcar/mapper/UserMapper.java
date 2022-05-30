@@ -9,5 +9,9 @@ import java.util.Map;
 public interface UserMapper {
 
     //登录
-    User login(Map<String,Object> UserMap);
+    User selectOne(Map<String,Object> UserMap);
+
+    //注册
+    int register(User user);
+    //注册验证
 }

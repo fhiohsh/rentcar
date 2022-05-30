@@ -495,7 +495,7 @@ transform: rotate(360deg);
 /*.flexslider{ width:920px; position:relative;height:400px;overflow:hidden;background:url(../images/loading.gif) 50% no-repeat;}*/
 .slides{position:relative;z-index:1;}
 .slides li{height:400px; background-size:cover;}
-.flex-control-nav{position:absolute;bottom:20px;z-index:2;width:100%;text-align:center;}
+.flex-control-nav{position:absolute;bottom:20px;z-index:2;width:100%;text-align:center;display: none;}
 .flex-control-nav li{display:inline-block;margin:0 5px;*display:inline;zoom:1;}
 .flex-control-nav a{cursor:pointer;display:inline-block;*display:inline;zoom:1;width:11px;height:11px;margin:1px;overflow:hidden;filter:alpha(opacity=100);opacity:1; font-size:0; background:#d2d2d2; border-radius:50%;}
 .flex-control-nav .flex-active{background:#ee7800;}

@@ -25,6 +25,7 @@ public class OrderDetail {
     private String rentfrom;
     private String ordertime;
     private String orderstatus;
+    private String contractimg;
 
     Cars car;
     Shops shop;

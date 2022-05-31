@@ -20,7 +20,7 @@ color: #23b7b7;
     opacity: 0.3;
     display: none;}
 .logindemoBg{
-    position: fixed;
+    position: absolute;
     top:60px;
     left: 18%;
     margin: 0 auto;
@@ -58,7 +58,7 @@ color: #23b7b7;
     color: rgb(11, 11, 11);
 }
 .logindemoBg .login_panels .closeBg span{
-    position: fixed;
+    position: absolute;
     width: 15px;
     height: 15px;
     border-radius: 15px;

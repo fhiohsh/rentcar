@@ -16,18 +16,25 @@
 
 .table thead tr th {
     border: 1px solid #DDD;
-    text-align:left;
-    text-indent:20px;
+    text-align:center;
+    /*text-indent:20px;*/
     padding:10px 8px;font-size: 14px;
     color:#707070;
     font-weight: 700;
  
 }
 .table tbody tr td {
-    border: 1px solid #DDD;text-indent:20px;text-align:left;padding:10px 8px;font-size: 14px;
+    border: 1px solid #DDD;
+    text-indent: 8px;
+    /* display: initial; */
+    text-align: center;
+    /* margin: 41px; */
+    /* padding: 6px 0px; */
+    font-size: 14px;
 }
+
 .table tbody tr button.printcontract {
-margin-left: -20px;
+margin:8px auto;
 }
 
 .table tbody tr:nth-child(2n+1) {
@@ -68,8 +75,9 @@ margin-left: -20px;
     background-color:#D15B47;
     border:0px;
     padding:3px;
-    margin-left: 8px;
+    /*margin-left: 11px;*/
     cursor:pointer;
+    margin:5px;
     float: left;
 }
 .table tbody tr .delete button:hover {

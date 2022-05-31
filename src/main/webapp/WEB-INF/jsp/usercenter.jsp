@@ -69,10 +69,13 @@
                     <div class="me-dl" style="display: block;">
                         <div class="me-one" id="me-four">
                             <ul class="cs-list">
-                                <li class="clearfix" style="position: relative;"> <span class="carImg fl dInline"><a
-                                        href="#" target="_blank">
-                                                <div class="car_bg"> </div> <img src="/statics/images/carrent1.png" width="300">
-                                            </a> </span>
+                                <li class="clearfix" style="position: relative;">
+                                    <span class="carImg fl dInline">
+                                    <a href="#" target="_blank">
+                                        <div class="car_bg"> </div>
+                                        <img src="/statics/images/carrent1.png" width="300">
+                                    </a>
+                                    </span>
                                     <div class="carTxt fr dInline">
                                         <h2><a href="#" target="_blank">奥迪A4L (排量：2.0T 排放标准：10L)</a></h2>
                                         <p>
@@ -98,6 +101,8 @@
                                             <a href="javascript:void(0)" onclick="delNeedThis('287')">取消预约</a>
                                         </div>
                                     </div>
+                                    <input type="hidden" id="fileordername" value="9999">
+                                    <input type="hidden" id="usersign" value="70">
                                 </li>
 
                             </ul>
@@ -233,7 +238,27 @@
         </div>
     </div>
 </form>
-<div class="signpanel" style="z-index: 99;display: none; width: 400px;border:1px  rgb(59, 202, 171) solid;position: relative;left: 600px;top: -800px;background: #fff"><div class="signature" id="signature" style="background: #F6F6F6;margin: 0 auto;width:400px;height:300px;border: 1px rgb(59, 202, 171) solid;"></div><p style="text-align: center"><b style="color: red">请按着鼠标写字签名。</b></p><div class="btnss" style="text-align: center"><div class="layui-btn layui-btnyes" id="yes">确认</div><div class="layui-btn" id="reset">重写</div></div><div id="someelement"></div></div>
+<%--  --%>
+<div class="paycode" style="z-index: 99;display: none;width:400px;height: 300px;background: #fff;position: absolute;top: 150px;left: 40%;">
+    <img src="/statics/images/qrcode.png" alt="">
+    <span style="position: absolute;font-size: 27px;right: 7px;top: 30px;">扫码支付</span>
+    <span style="position: absolute;font-size: 17px;right: 20px;top:270px;color: #EB5A01;">
+        已<a href="javascript:;" id="payforOrder">支付</a>完成
+    </span>
+    <form action="/Order/addorder" method="post" id="payforOrderForm">
+        <input type="hidden" name="orderstatus" value="2">
+        <input type="hidden" id="OrderUserId" name="uid" value="${sessionScope.user.id}">
+        <input type="hidden" name="pickaddress" value="${ordetails.shop.city.name}${ordetails.shop.name}">
+    </form>
+</div>
+<div class="signpanel" style="z-index: 99;display: none; width: 400px;border:1px  rgb(59, 202, 171) solid;position: relative;left: 600px;top: -800px;background: #fff">
+    <div class="signature" id="signature" style="background: #F6F6F6;margin: 0 auto;width:400px;height:300px;border: 1px rgb(59, 202, 171) solid;">
+    </div>
+    <p style="text-align: center"><b style="color: red">请按着鼠标写字签名。</b></p>
+    <div class="btnss" style="text-align: center"><div class="layui-btn layui-btnyes" id="yes">确认</div>
+        <div class="layui-btn" id="reset">重写</div></div>
+    <div id="someelement"></div>
+</div>
 <script type="text/javascript" src="/statics/script/jSignature.min.js"></script>
 <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 
@@ -243,13 +268,43 @@
 <%@ include file="common/footer.jsp"%>
 
 <script>
+    var filename = $("#fileordername").val();
+    var f2name = $("#usersign").val();
+    var fname = filename+f2name;
+
+
+    //合同保存
+    $("#someelement").click(function () {
+        $(".bg110").hide();
+        $(".signpanel").fadeOut();
+        layer.msg("合同签字已保存",{icon: 1,time:400},function(index){
+            $.ajax({
+                type:"POST",
+                url:"/tbase",
+                data:{bases:$('#signimg')[0].src,orderId:filename,uid:f2name},
+                dataType: 'json',
+                success:function(data){
+                    console.log(data)
+                }
+            });
+        });
+    });
+
+    //查看地图
     $(".selectShop").click(function () {
         location.href = "/shopByCity/成都"
     });
     $("#timebtn").click(function () {
         $(".logindemoBg2").fadeOut();
-        // $("#timebtn").submit();
     });
+
+    $("#payforOrder").click(function () {
+        layer.msg("订单已完成",{icon: 1,time:300},function(index){
+            $(".paycode").fadeOut();
+            $(".bg110").hide();
+        });
+    });
+
     $(".cs-q4").click(function () {
         layer.msg('获取信息中...',{icon: 6,
             shade: [0.5, '#f5f5f5'],
@@ -261,22 +316,20 @@
                 closeBtn: 0, //不显示关闭按钮
                 anim: 2,
                 shadeClose: true, //开启遮罩关闭
-                btn: ['支付'],
+                btn: ['确定'],
                 yes:function(index){
                     layer.msg('请稍候...', {
                         icon: 6,
                         shade: [0.5, '#f5f5f5'],
-                        time:200},function (index) {
-                        layer.msg("订单已完成",{icon: 1,time:300},function(index){
-                            // $(".bg110").show();
-                            // $(".verifyformBg").fadeIn();
-                        });
+                        time:400},function (index) {
+                            $(".bg110").show();
+                            $(".paycode").fadeIn();
                     });
                     layer.close(index)
                 },
 
                 content: '<div class="layui-form-item" style="margin:20px"><label class="layui-form-label">订单id:</label>' +
-                    '<div class="layui-input-block"><input type="text" name="title" autocomplete="off" class="layui-input" value="1121" style="width:100px;" readonly="readonly"></div>' +
+                    '<div class="layui-input-block" style="margin-top:10px;"><input type="text" name="title" autocomplete="off" class="layui-input" value="1121" style="width:100px;" readonly="readonly"></div>' +
                     '<label class="layui-form-label">￥费用统计:</label><div class="layui-input-block"><input type="text" name="title" autocomplete="off" class="layui-input" value="1121" style="width:100px;" readonly="readonly"></div>' +
                     '<div class="renewtime" style="margin-top:10px;"><label class="layui-form-label">上传车辆照片</label><div class="layui-input-block">' +
                     '<input type="file" name="title" autocomplete="off" class="layui-input" style="width:150px;"></div></div>' +

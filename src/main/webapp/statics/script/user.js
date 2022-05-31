@@ -18,11 +18,8 @@ layui.use('util', function () {
     util.countdown(endTime, serverTime, function (date, serverTime, timer) {
         var str = date[0] + '天' + date[1] + '时';
 
-        console.log('1::' + serverTime);
-        console.log('2::' + endTime);
         layui.$('#test2').html('距离还车时间还有：' + str);
         if (serverTime == endTime || serverTime > endTime) {
-            console.log('123');
             layer.open({
                 title: '<div style="color:#000">完成</div>',
                 content: '您的租期已到，请您及时还车！'
@@ -40,9 +37,7 @@ $("#curtime").change(function () {
     var y1 = iss.split("-")[0];
     var m1 = iss.split("-")[1];
     var m2 = iss.split("-")[2];
-    console.log(y1 + ',' + m1 + ',' + m2);
     var time1 = new Date(y1, m1, m2);
-    console.log(time1);
 });
 
 $('.mr2 li').each(function (index) {

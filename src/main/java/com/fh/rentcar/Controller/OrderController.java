@@ -8,11 +8,13 @@ import com.fh.rentcar.service.CityService;
 import com.fh.rentcar.service.OrderService;
 import com.fh.rentcar.service.ShopService;
 import com.fh.rentcar.util.TimeFormats;
+import com.fh.rentcar.util.codeShift;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,5 +73,22 @@ public class OrderController {
             orderService.addOrder(orderDetails);
         }
         return "paysuccess";
+    }
+
+
+    //订单合同照片保存
+    @RequestMapping("/tbase")
+    @ResponseBody
+    public String tbase(String bases,String orderId,String uid) throws IOException {
+        System.out.println(bases);
+        //保存照片
+        codeShift.base64To(bases,orderId+uid);
+        //上传图片to数据库
+        HashMap<String,Object> maps = new HashMap<>();
+        maps.put("id",orderId);
+        maps.put("uid",uid);
+        maps.put("contractimg",orderId+uid);
+        orderService.updateOrder(maps);
+        return "ok";
     }
 }

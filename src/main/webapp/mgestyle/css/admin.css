@@ -368,3 +368,9 @@ gallery.html css
   width: 200px;
   margin: 0 auto;
 }
+
+/*  照片*/
+.table tbody tr td img.carimgs{
+  width: 120px;
+  height: 93px;
+}

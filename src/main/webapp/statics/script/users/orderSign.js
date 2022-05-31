@@ -1,13 +1,6 @@
 $("#verform").click(function () {
     $(".bg110").show();
     $(".verifyformBg").fadeOut();
-
-    $("#someelement").click(function () {
-        $(".bg110").hide();
-        $(".signpanel").fadeOut();
-        layer.msg("合同签字已保存",{icon: 1,time:400},function(index){
-        });
-    });
     layer.open({
         type: 1,
         title: ' 电子签名 ',
@@ -26,7 +19,7 @@ $("#verform").click(function () {
             });
             layer.close(index)
         },
-        content: '<b>电子签名在法律条款有效范围内等</b>'
+        content: '<b style="margin: 20px;">电子签名在法律条款有效范围内等</b>'
     });
 });
 
@@ -68,6 +61,7 @@ $(".closeBg").click(function () {
 
 
 $(function() {
+
     var param= {
         width: '400px',//签名区域的宽
         height: '500px',//签名区域的高
@@ -85,22 +79,18 @@ $(function() {
         var datapair = $sigdiv.jSignature("getData", "image");
         var i = new Image();
         i.src = "data:" + datapair[0] + "," + datapair[1];
+        i.id = "signimg";
         $(i).appendTo($("#someelement")); // append the image (SVG) to DOM.
-
-        //var data = $sigdiv.jSignature('getData', 'default')
-        //console.log(data);  这个和上面得到的结果一样
-
     });
-    //datapair = $sigdiv.jSignature("getData","base30");
-    //$sigdiv.jSignature("setData", "data:" + datapair.join(","));
+
     $("#download").click(function(){
-        downloadFile("a.png", convertBase64UrlToBlob($("img").attr("src")));
+        downloadFile("a.png", convertBase64UrlToBlob($("#signimg").attr("src")));
     });
     $("#reset").click(function(){
         $sigdiv.jSignature("reset"); //重置画布，可以进行重新作画.
         $("#someelement").html("");
     });
-    // });
+
     function downloadFile(fileName, blob){
         var aLink = document.createElement('a');
         var evt = document.createEvent("HTMLEvents");
@@ -117,7 +107,6 @@ $(function() {
     function convertBase64UrlToBlob(urlData){
 
         var bytes=window.atob(urlData.split(',')[1]);        //去掉url的头，并转换为byte
-
         //处理异常,将ascii码小于0的转换为大于0
         var ab = new ArrayBuffer(bytes.length);
         var ia = new Uint8Array(ab);

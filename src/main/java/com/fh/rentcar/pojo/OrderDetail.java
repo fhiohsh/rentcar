@@ -17,7 +17,7 @@ public class OrderDetail {
     private int shop_id;
     private String returntime;
     private int uid;
-
+    private String totalprice;
     private String rentprice;
     private String deposit;
     private String renttime;

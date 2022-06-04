@@ -12,8 +12,6 @@ public interface CarsMapper {
 
     List<Cars> getAllCars();
 
-
-
     List<Cars> getCarsByName(String carName);
 //    Cars getCarsById(Integer carId);
 
@@ -24,4 +22,7 @@ public interface CarsMapper {
 
     //id
     Cars getCarByCarId(int carId);
+
+    //更新车辆状态
+    void updateCarStatus(Cars cars);
 }

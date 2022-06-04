@@ -8,12 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RenewOrder {
-    private int id;
+    private int orderrenewid;
+    private String oldreturntime;
+    private String newreturntime;
     private int orderid;
-    private String renewtime;
-    private String oldrenttime;
-    private String newrenttime;
-    private int price;
-
-    OrderDetail orderDetail;
+    private String reordertime;
 }

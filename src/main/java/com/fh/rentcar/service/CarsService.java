@@ -1,13 +1,14 @@
 package com.fh.rentcar.service;
 
 import com.fh.rentcar.pojo.Cars;
+import com.fh.rentcar.pojo.RenewOrder;
 
 import java.util.List;
 import java.util.Map;
 
 public interface CarsService {
     /**
-     * 根据城市查询车辆
+     * 根据城id查询车辆
      */
     List<Cars> carByCity(Integer cid);
     /**
@@ -23,4 +24,7 @@ public interface CarsService {
 
     //id
     Cars getCarByCarId(int carId);
+
+    //更新车辆状态
+    void updateCarStatus(Cars cars);
 }

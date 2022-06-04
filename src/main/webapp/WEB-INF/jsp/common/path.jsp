@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="shortcut icon" href="/statics/images/favicon.ico">
 <%
     String jsUrl=request.getContextPath()+"/statics/script/";
     String cssUrl=request.getContextPath()+"/statics/css/";

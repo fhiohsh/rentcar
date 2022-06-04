@@ -17,7 +17,6 @@
     <li><a href="/cars/shopsCar/1201">租车</a><span></span></li>
     <li><a href="/cars/pages/1">车型查询</a><span></span></li>
     <li><a href="/shop">营业网点</a><span></span></li>
-    <li><a href="">个人中心</a><span></span></li>
 </ul>
 <div class="clear_fix"></div>
 <div class="banner">

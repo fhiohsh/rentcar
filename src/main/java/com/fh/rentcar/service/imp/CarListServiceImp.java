@@ -14,7 +14,7 @@ public class CarListServiceImp implements CarsService {
 
     @Autowired
     private CarsMapper carsMapper;
-    //根据城市选车车 测试
+    //根据城市选车车
     @Override
     public List<Cars> carByCity(Integer cid) {
         return carsMapper.getCarByCity(cid);
@@ -38,5 +38,10 @@ public class CarListServiceImp implements CarsService {
     @Override
     public Cars getCarByCarId(int carId) {
         return carsMapper.getCarByCarId(carId);
+    }
+
+    @Override
+    public void updateCarStatus(Cars cars) {
+        carsMapper.updateCarStatus(cars);
     }
 }

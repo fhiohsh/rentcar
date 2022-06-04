@@ -272,9 +272,9 @@
                 <a href="/admin/carmanage" target="right">
                     <li>车辆信息管理</li>
                 </a>
-                <a href="inventory.html" target="right">
-                    <li>车辆审核</li>
-                </a>
+<%--                <a href="inventory.html" target="right">--%>
+<%--                    <li>车辆审核</li>--%>
+<%--                </a>--%>
             </ul>
         </li>
     </ul>

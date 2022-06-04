@@ -1,6 +1,7 @@
 package com.fh.rentcar.mapper;
 
 import com.fh.rentcar.pojo.OrderDetail;
+import com.fh.rentcar.pojo.RenewOrder;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -16,6 +17,13 @@ public interface OrderMapper {
 
     //显示订单
     List<OrderDetail> getAllOrder();
+
+    //显示订单
+    List<OrderDetail> getAllOrderWith(Map<String,Object> orderMap);
+
+    //续租订单
+    int addRenewOrder(RenewOrder orderRenew);
+
 
 
 }

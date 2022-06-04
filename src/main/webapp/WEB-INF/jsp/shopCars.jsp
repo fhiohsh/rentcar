@@ -1,35 +1,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Fh
-  Date: 2022/5/20
-  Time: 21:00
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="/statics/layui/css/layui.css">
+    <%@ include file="common/path2.jsp"%>
     <script type="text/javascript" src="/statics/layui/layui.js"></script>
-    <link rel="stylesheet" type="text/css" href="/statics/css/base.css" />
-    <link rel="stylesheet" type="text/css" href="/statics/css/home.css" />
-    <link rel="stylesheet" type="text/css" href="/statics/city/city.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/charge.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/self.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/hurst.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/loginstyle.css">
     <script type="text/javascript" src="/statics/script/jquery-1.8.0.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/statics/script/city.js"></script>
+    <script type="text/javascript" src="/statics/script/city.js"></script>
     <title>Title</title>
 </head>
 <body>
 <%@ include file="common/header.jsp"%>
 <ul class="navmenu">
-    <li><a href="/a">首页</a><span></span></li>
-    <li class="active"><a href="">租车</a><span></span></li>
+    <li ><a href="/a">首页</a><span></span></li>
+    <li class="active"><a href="/cars/shopsCar/1201">租车</a><span></span></li>
     <li><a href="/cars/pages/1">车型查询</a><span></span></li>
     <li><a href="/shop">营业网点</a><span></span></li>
-    <li><a href="">个人中心</a><span></span></li>
 </ul>
 <div class="clear_fix"></div>
 <div class="crumbp"> <a href="#">首页</a> <em>&gt;</em> <span>租车门店</span> </div>
@@ -64,7 +49,7 @@
                                     <p class="fc-gray"><span class="tag-gray">${cars.city.name}</span><span class="">三箱 ${cars.seats}座 自动</span>
                                         <em class="shuxian">|</em> ${cars.carml}</p>
                                     <p class="priType-s"><span> <i class="fc-org priType" name> ${cars.rentprice}/天 </i> </span></p>
-                                    <a href=""><div class="carlist-btn">预定</div></a>
+                                    <a href="/cars/carShops/${shop.city.name}/${cars.name}"><div class="carlist-btn">预定</div></a>
                                 </div>
                             </li>
                         </c:forEach>

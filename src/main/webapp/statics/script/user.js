@@ -1,9 +1,9 @@
 
 
-//倒计时
-var iptVa = document.getElementById('test1').value
-layui.use('util', function () {
 
+layui.use('util', function () {
+//倒计时
+    var iptVa = $('#test1').val();
     console.log("获取结束时间:" + iptVa);
     var util = layui.util;
     //示例
@@ -52,6 +52,16 @@ $('.mr-tab a').each(function (index) {
         $('.me-dl').eq(index).show().siblings().hide();
     })
 });
+$('#showorders').click(function () {
+    $('.mr-detail').css('display','block');
+});
+$('#userscenter').click(function () {
+    $('.mr-detail').css('display','none');
+});
+$('#useraccount').click(function () {
+    $('.mr-detail').css('display','none');
+});
+
 
 $('.cs_ding a').mouseover(function () {
     this.style.color = 'blue';

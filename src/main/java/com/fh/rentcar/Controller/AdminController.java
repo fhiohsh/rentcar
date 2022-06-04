@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -31,8 +32,9 @@ public class AdminController {
 
     @RequestMapping("/orders")
     public String adminOrder(Model model){
+        HashMap<String,Object> maps = new HashMap<String, Object>();
         List<OrderDetail> orderDetailList;
-        orderDetailList = orderService.getAllOrder();
+        orderDetailList = orderService.getAllOrderWith(maps);//空map
         //显示订单
         model.addAttribute("orderlist",orderDetailList);
         return "admin/order";

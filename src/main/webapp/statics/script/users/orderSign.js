@@ -13,7 +13,7 @@ $("#verform").click(function () {
             layer.msg('请稍候...', {
                 icon: 6,
                 shade: [0.5, '#f5f5f5'],
-                time:800},function (index) {
+                time:300},function (index) {
                 $(".signpanel").show();
                 layer.close(index);
             });

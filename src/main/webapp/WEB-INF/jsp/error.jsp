@@ -19,7 +19,7 @@
     异常地址：[[${url}]]
     <br>
     <br>
-    <a href="/a">返回主页</a>
+    <a href="javascript:history.go(-1);" style="font-size: 20px;">返回上一页</a>
 </div>
 </body>
 </html>

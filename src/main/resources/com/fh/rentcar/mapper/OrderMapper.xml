@@ -13,10 +13,35 @@
                      javaType="com.fh.rentcar.pojo.User" select="MapToUser"/>
     </resultMap>
 
+
     <select id="getAllOrder" resultMap="orderMap">
          select * from order_details
     </select>
+    <select id="ToOrderMap" resultMap="orderMap">
+         select * from order_details where id = #{id}
+    </select>
 
+    <select id="getAllOrderWith" parameterType="java.util.Map" resultMap="orderMap">
+         select * from order_details
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="orderstatus != null">
+                and orderstatus=#{orderstatus}
+            </if>
+            <if test="uid != null">
+                and uid=#{uid}
+            </if>
+            <if test="returnaddress != null">
+                and returnaddress=#{returnaddress}
+            </if>
+            <if test="contractimg != null">
+                and contractimg=#{contractimg}
+            </if>
+        </trim>
+         order by ordertime
+    </select>
 
 
     <select id="updateOrder" parameterType="java.util.Map">
@@ -25,14 +50,20 @@
             <if test="orderstatus != null">
                 orderstatus=#{orderstatus},
             </if>
-            <if test="uid != null">
-                uid=#{uid},
-            </if>
             <if test="returnaddress != null">
                 returnaddress=#{returnaddress},
             </if>
             <if test="contractimg != null">
                 contractimg=#{contractimg},
+            </if>
+            <if test="returncartime != null">
+                returncartime=#{returncartime},
+            </if>
+            <if test="renttime != null">
+                renttime=#{renttime},
+            </if>
+            <if test="totalprice != null">
+                totalprice=#{totalprice}
             </if>
         </set>
         where id = #{id}
@@ -40,8 +71,14 @@
 
     <insert id="addOrder" parameterType="com.fh.rentcar.pojo.OrderDetail">
         insert into
-        order_details(car_id,pickcartime,returncartime,pickaddress,shop_id,renttime,uid,rentprice,deposit,rentfrom,renttype,ordertime,orderstatus)
-        values (#{car_id},#{pickcartime},#{returncartime},#{pickaddress},#{shop_id},#{renttime},#{uid},#{rentprice},#{deposit},#{rentfrom},#{renttype},#{ordertime},#{orderstatus})
+        order_details(car_id,pickcartime,returncartime,pickaddress,shop_id,renttime,uid,rentprice,deposit,rentfrom,renttype,ordertime,orderstatus,totalprice)
+        values (#{car_id},#{pickcartime},#{returncartime},#{pickaddress},#{shop_id},#{renttime},#{uid},#{rentprice},#{deposit},#{rentfrom},#{renttype},#{ordertime},#{orderstatus},#{totalprice})
+    </insert>
+<!--    续租增加-->
+    <insert id="addRenewOrder" parameterType="com.fh.rentcar.pojo.RenewOrder">
+        insert into
+        orderrenew(oldreturntime,newreturntime,orderid,reordertime)
+        values (#{oldreturntime},#{newreturntime},#{orderid},#{reordertime})
     </insert>
 
 
@@ -54,4 +91,17 @@
     <select id="MapToUser" resultType="com.fh.rentcar.pojo.User">
         select * from user_info where id = #{uid}
     </select>
+
+    <select id="MapToReOrder" resultType="com.fh.rentcar.pojo.RenewOrder">
+         select * from orderrenew where orderrenewid = #{renewstatus}
+    </select>
+
+<!--    shops -->
+<!--    <resultMap id="getShopMap" type="com.fh.rentcar.pojo.Shops">-->
+<!--        <id column="id" property="id" />-->
+<!--        <association property="city" column="city_id"-->
+<!--                     javaType="com.fh.rentcar.pojo.City" select="MapToCity"/>-->
+<!--        <association property="street" column="street_id"-->
+<!--                     javaType="com.fh.rentcar.pojo.Street" select="MapToStreet"/>-->
+<!--    </resultMap>-->
 </mapper>

@@ -3,15 +3,8 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="/statics/layui/css/layui.css">
+    <%@ include file="common/path2.jsp"%>
     <script type="text/javascript" src="/statics/layui/layui.js"></script>
-    <link rel="stylesheet" type="text/css" href="/statics/css/base.css" />
-    <link rel="stylesheet" type="text/css" href="/statics/css/home.css" />
-    <link rel="stylesheet" type="text/css" href="/statics/city/city.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/charge.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/self.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/hurst.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/loginstyle.css">
     <script type="text/javascript" src="/statics/script/jquery-1.8.0.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/statics/script/city.js"></script>
 
@@ -20,10 +13,9 @@
 <%@ include file="common/header.jsp"%>
 <ul class="navmenu">
     <li><a href="/a">首页</a><span></span></li>
-    <li><a href="">租车</a><span></span></li>
-    <li class="active"><a href="/cars/pages/1">车型查询</a><span></span></li>
-    <li><a href="/shop">营业网点</a><span></span></li>
-    <li><a href="">个人中心</a><span></span></li>
+    <li><a href="/cars/shopsCar/1201">租车</a><span></span></li>
+    <li class="active"><a href="/carList">车型查询</a><span></span></li>
+    <li ><a href="/shop">营业网点</a><span></span></li>
 </ul>
 <div class="clear_fix"></div>
 <div class="crumbp"> <a href="#">首页</a> <em>&gt;</em> <span>租车</span> </div>
@@ -59,8 +51,8 @@
                     <div class="nocartip" id="nocartip" style="display: none">
                         <img src="https://booking.1hai.cn/Content/Images/Order/Step2/nocar.png?v=d2fb5f2aa0fe4134874c006eb28c20b5" alt="">
                         <div class="nocar-explain">
-                            <p class="nocar-text1">抱歉，当前门店该时间段内车辆已经租满。</p>
-                            <p class="nocar-text2">您可以重新选择其他门店。</p>
+                            <p class="nocar-text1">抱歉，当前城市该车型已经租满。</p>
+                            <p class="nocar-text2">您可以重新选择其他城市。</p>
                         </div>
                     </div>
                 </c:if>
@@ -69,13 +61,13 @@
 <%--            style="display: none"--%>
             <div id="carinfo" style="display: none">
                 <c:forEach var="car" items="${pages.list}">
-                    <a href="/cars/carShops/${citys.name}/${car.name}" class="car-list" target="_blank"  >
-                        <div class="car-img"><img src="/statics/images/${car.img}" style="display:inline"></div>
-                        <div class="car-des">
-                            <span title="${car.name}">${car.name}</span>
-                            <i>三厢 5座 自动    - ${car.city.name}${car.street.name}</i>
-                        </div>
-                    </a>
+                        <a href="/cars/carShops/${citys.name}/${car.name}" class="car-list" id="carshops" target="_blank"  >
+                            <div class="car-img"><img src="/statics/images/${car.img}" style="display:inline"></div>
+                            <div class="car-des">
+                                <span title="${car.name}">${car.name}</span>
+                                <i>三厢 5座 自动    - ${car.city.name}${car.street.name}</i>
+                            </div>
+                        </a>
                 </c:forEach>
 
                 <div class="pages">
@@ -103,6 +95,7 @@
 </div>
 
 <script>
+
     var countdown = function(){
         setTimeout(function (){
             $("#carinfo").css('display','block');

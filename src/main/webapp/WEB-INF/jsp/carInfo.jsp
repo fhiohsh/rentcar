@@ -2,20 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="/statics/layui/css/layui.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/loginstyle.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/base.css" />
-    <link rel="stylesheet" type="text/css" href="/statics/css/home.css" />
-    <link rel="stylesheet" type="text/css" href="/statics/city/city.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/charge.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/self.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/hurst.css">
+    <%@ include file="common/path2.jsp"%>
     <link rel="stylesheet" type="text/css" href="/statics/css/datecaculate.css">
-
-
-
     <script type="text/javascript" src="/statics/script/jquery-1.8.0.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/statics/script/city3.js"></script>
+    <script type="text/javascript" src="/statics/script/city3.js"></script>
     <script type="text/javascript" src="/statics/layui/layui.js"></script>
     <title>Title</title>
 </head>
@@ -23,10 +13,9 @@
 <%@ include file="common/header.jsp"%>
 <ul class="navmenu">
     <li><a href="/a">首页</a><span></span></li>
-    <li><a href="">租车</a><span></span></li>
+    <li><a href="/cars/shopsCar/1201">租车</a><span></span></li>
     <li class="active"><a href="/carList">车型查询</a><span></span></li>
-    <li><a href="/shop">营业网点</a><span></span></li>
-    <li><a href="">个人中心</a><span></span></li>
+    <li ><a href="/shop">营业网点</a><span></span></li>
 </ul>
 <div class="clear_fix"></div>
 <div class="crumbp"> <a href="#">首页</a> <em>&gt;</em> <span>个人二手车</span> </div>
@@ -62,7 +51,8 @@
             <div class="cityqu">
                 <div class="newarea">
                     <c:forEach var="street" items="${streetList}">
-                        <a href="">${street.name}区</a>
+                        <a href="/cars/carShops/${citys.name}/${car.name}/${street.id}">${street.name}区</a>
+<%--                        <input type="hidden" id="streetIdVal" value="${street.id}">--%>
                     </c:forEach>
                     <c:if test="${empty streetList}">
                         <span style="position: absolute;margin-left:120px;margin-top: 21px;font-size: 21px;font-weight: bold;">目前该城市还没有，请您查询其他城市！</span>
@@ -79,7 +69,7 @@
             <div class="shops" style="">
                 <div class="store-info">
                     <p>${cars.shops.name}</p>
-                    <span>${cars.city.name}${cars.street.name}${cars.shops.address}</span>
+                    <span>${cars.shops.city.name}${cars.shops.street.name}${cars.shops.address}</span>
                 </div>
                 <div class="store-price">
                     ￥ ${cars.rentprice}
@@ -141,7 +131,8 @@
 
                     <a href="#" id="qued"><div class="layui-btn-container">
                         <button type="button" class="layui-btn layui-btn-lg" style="font-size: 23px;">预定</button>
-                    </div></a>
+                    </div>
+                    </a>
             </form>
         </div>
 <%--        <span id="close" class="loginclosedate">&times;</span>--%>
@@ -150,6 +141,13 @@
 <script type="text/javascript" src="/statics/script/datecau.js"></script>
 <script>
     var carname = '${car.name}';
+
+    <%--$('#streetId').click(function () {--%>
+    <%--    // var strId = $('#streetIdVal').val();--%>
+    <%--    var strId = $("#streetIdVal").attr("sid");--%>
+    <%--    location.href="/cars/carShops/${citys.name}/${car.name}/"+strId;--%>
+    <%--});--%>
+
     var countdown = function(){
         setTimeout(function (){
             $("#carinfo").css('display','block');

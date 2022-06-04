@@ -1,20 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="/statics/layui/css/layui.css">
-    <script type="text/javascript" src="/statics/layui/layui.js"></script>
-    <link rel="stylesheet" type="text/css" href="/statics/css/base.css" />
-    <link rel="stylesheet" type="text/css" href="/statics/css/home.css" />
-    <link rel="stylesheet" type="text/css" href="/statics/city/city.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/charge.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/self.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/hurst.css">
+    <%@ include file="common/path2.jsp"%>
     <link rel="stylesheet" type="text/css" href="/statics/css/datecaculate.css">
-    <link rel="stylesheet" type="text/css" href="/statics/css/loginstyle.css">
     <script type="text/javascript" src="/statics/script/jquery-1.8.0.min.js"></script>
-
-
+    <script type="text/javascript" src="/statics/layui/layui.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=IDvNBsejl9oqMbPF316iKsXR"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
     <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css"/>
@@ -23,18 +15,16 @@
 <body>
 <%@ include file="common/header.jsp"%>
 <ul class="navmenu">
-    <li><a href="/a">首页</a><span></span></li>
-    <li><a href="">租车</a><span></span></li>
-    <li class="active"><a href="/carList">车型查询</a><span></span></li>
-    <li><a href="/shop">营业网点</a><span></span></li>
-    <li><a href="">个人中心</a><span></span></li>
+    <li ><a href="/a">首页</a><span></span></li>
+    <li ><a href="/cars/shopsCar/1201">租车</a><span></span></li>
+    <li><a href="/cars/pages/1">车型查询</a><span></span></li>
+    <li class="active"><a href="/shop">营业网点</a><span></span></li>
 </ul>
 <div class="clear_fix"></div>
 <div class="crumbp"> <a href="#">首页</a> <em>&gt;</em> <span>营业网点</span><em>&gt;</em> <span>地图导航</span> </div>
 <div class="clear_fix"></div>
 <div class="navigation navg2">
     <div class="nav-cent nac2">
-        <!-- <div class="logo"><a href="index.html"><img src="images/logo.png" width="240" /></a></div> -->
         <div class="citychange">
             <div class="city clearcity"> <em></em>
                 <span id="DY_site_name" class="red city-name Left cl" style="font-size: 20px;">${city.name}</span>
@@ -85,10 +75,10 @@
 
     <div class="mainbox mainmaps">
         <div class="main-box-left">
-            <c:forEach var="shop" items="${shopList}">
+            <c:forEach var="shop" items="${shopList}" varStatus="i">
                 <div class="store-box" onclick="openInfoWindows('${shop.id}','${shop.city.id}')">
                     <ul>
-                        <li class="store-mark">1</li>
+                        <li class="store-mark">${i.index+1}</li>
                         <li class="store-name">${shop.name}<em class="store-tips">支持24小时自助取还</em></li>
                         <li class="store-address">${shop.city.name}${shop.address}-${shop.name}<span></span></li>
                         <li class="store-phone">门店电话：<span>${shop.phone}</span></li>
@@ -112,6 +102,17 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/statics/script/city2.js"></script>
 <script type="text/javascript">
+
+    const user = '${sessionScope.user.name}';
+    var returnAddress= function(returnCity,returnStreet,returnAddress,returnShopName) {
+        const address = returnCity + returnStreet + returnAddress + '-' + returnShopName;
+        if(user === ''){
+            layer.alert("请您先登录在还车")
+        }else{
+            layer.msg(address);
+        }
+    };
+
     //初始化
     var map = new BMap.Map('fcmap');
 
@@ -145,12 +146,12 @@
         marker[${i.index}] = new BMap.Marker(new BMap.Point(p0, p1), {icon: myIcon});
         map.addOverlay(marker[${i.index}]);
         //content
-        var cons = '<div><h4 style="margin:0 0 5px 0;font-size:20px;color: #666;">${shop.name}${shop.id}</h4>' +
+        var cons = '<div><h4 style="margin:0 0 5px 0;font-size:20px;color: #666;">${shop.name}</h4>' +
             '<p style="line-height:1.5;font-size:13px;">${shop.address}-${shop.city.name}${shop.street.name}</p>' +
             '<div style=""><p style="line-height:1.5;font-size:13px;">营业时间：<b>${shop.business_hours}</b></p>' +
             '<p style="line-height:1.5;font-size:13px;">门店电话：<b>${shop.phone}</b></p></div>' +
             '<div style="text-align:right;"><a href="/cars/shopsCar/${shop.id}" style="color:#23b7b7; font-weight: bolder;font-size: 14px;">查看门店>></a>'+
-            '<br><a href="/cars/shopsCar/${shop.id}" style="color:#23b7b7; font-weight: bolder;font-size: 14px;">在此还车>></a></div>';
+            '<br><a href="/saveReturnAddress/${shop.city.name}/${shop.street.name}/${shop.address}/${shop.name}/${sessionScope.user.id}" style="color:#23b7b7; font-weight: bolder;font-size: 14px;">在此还车>></a></div>';
 
          addinfo(cons, marker[${i.index}]);
          console.log(${i.index});
@@ -173,7 +174,7 @@
         <c:forEach var="shop" items="${shopList}" varStatus="i">
             sid = '${shop.id}';
            if(sid === id){
-               var cons = '<div><h4 style="margin:0 0 5px 0;font-size:20px;color: #666;">${shop.name}${shop.id}</h4>' +
+               var cons = '<div><h4 style="margin:0 0 5px 0;font-size:20px;color: #666;">${shop.name}</h4>' +
                    '<p style="line-height:1.5;font-size:13px;">${shop.address}-${shop.city.name}${shop.street.name}</p>' +
                    '<div style=""><p style="line-height:1.5;font-size:13px;">营业时间：<b>${shop.business_hours}</b></p>' +
                    '<p style="line-height:1.5;font-size:13px;">门店电话：<b>${shop.phone}</b></p></div>' +
@@ -192,15 +193,11 @@
         </c:forEach>
     }
 
-
     $('.main-box-left div').each(function (index) {
       $(this).click(function () {
         $(this).addClass('store-box-hover').siblings().removeClass('store-box-hover');
-        // $('.me-dl').eq(index).show().siblings().hide();
       })
     });
-
-
 
 </script>
 

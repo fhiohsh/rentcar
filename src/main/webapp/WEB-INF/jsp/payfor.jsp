@@ -9,12 +9,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="shortcut icon" href="/statics/images/favicon.ico">
+
     <link rel="stylesheet" type="text/css" href="/statics/layui/css/layui.css">
     <link rel="stylesheet" type="text/css" href="/statics/css/loginstyle.css">
     <link rel="stylesheet" type="text/css" href="/statics/css/charge.css">
     <link rel="stylesheet" type="text/css" href="/statics/css/self.css">
-
-
     <script type="text/javascript" src="/statics/script/jquery-1.8.0.min.js"></script>
     <script type="text/javascript" src="/statics/layui/layui.js"></script>
     <title>订单明细</title>
@@ -42,6 +42,7 @@
                     <img src="/statics/images/${ordetails.car.img}"
                          alt="大众朗逸">
                     <span>租 期：<em>${ordetails.renttime}</em>天</span>
+                    <span>日 租：<em>${ordetails.rentprice}</em>/天</span>
                 </div>
 
                 <div class="store-info-box">
@@ -80,7 +81,7 @@
                 <ul>
                     <li class="line-clear" id="baseRatePrice">
                         <em class="price-drop">
-                            ￥${ordetails.rentprice}<i class="price-drop-open" style="display: block;"></i>
+                            ￥${ordetails.totalprice}<i class="price-drop-open" style="display: block;"></i>
                             <i class="price-drop-close" style="display: none;"></i>
                         </em>车辆租赁费及门店服务费
                     </li>
@@ -113,7 +114,7 @@
                 </div>
                 <div class="price-box" id="totalAmount">
                     <span class="price-txt" id="priceTitle">总计:</span>
-                    <span class="price-total" id="priceTotal"><em>￥</em>${ordetails.rentprice}</span>
+                    <span class="price-total" id="priceTotal"><em>￥</em>${ordetails.totalprice}</span>
                 </div>
                 <div class="price-box" id="totalAmount">
                 <span class="price-txt" >订金:</span>

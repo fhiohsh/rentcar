@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>支付页面</title>
+    <link rel="shortcut icon" href="/statics/images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="/statics/css/loginstyle.css">
     <link rel="stylesheet" type="text/css" href="/statics/css/charge.css">
     <link rel="stylesheet" type="text/css" href="/statics/css/self.css">
@@ -35,7 +36,7 @@
     <div class="msgp">
         <p>订单提交成功！请您按时去门店取车</p>
         <em class="msgimg"></em>
-        <span>查看您的<a href="/usercenter"> 订单</a></span>
+        <span>查看您的<a href="/user/usercenters/${sessionScope.user.id}"> 订单</a></span>
     </div>
 </div>
 <%@ include file="common/footer.jsp"%>

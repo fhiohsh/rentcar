@@ -21,13 +21,6 @@ public class AccountController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/usercenter")
-    public String userCenter(){
-        return "usercenter";
-    }
-
-
-
     //用户注销
     @RequestMapping("/logout")
     @ResponseBody

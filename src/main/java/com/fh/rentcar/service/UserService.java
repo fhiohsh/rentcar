@@ -1,7 +1,9 @@
 package com.fh.rentcar.service;
 
+import com.fh.rentcar.pojo.Role;
 import com.fh.rentcar.pojo.User;
 
+import java.util.List;
 import java.util.Map;
 
 public interface UserService {
@@ -12,4 +14,10 @@ public interface UserService {
 
     //注册
     int register(User user);
+
+    //登录验证
+    User verifyUser(String username);
+
+    //获取权限
+    List<Role> getUserRolesByUid(Integer id);
 }

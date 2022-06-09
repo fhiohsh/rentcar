@@ -19,6 +19,7 @@
             <p>
                 Copyright © 2022 - 2023 风车车-java-6
                 <a href="http://www.beian.gov.cn/" target="_blank" rel="nofollow">ICP证：川A1-20140130</a>
+                <a href="/admin/ad">Back-to-test-></a>
             </p>
         </div>
         <div class="footer-right">

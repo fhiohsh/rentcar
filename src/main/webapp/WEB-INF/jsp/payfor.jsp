@@ -153,8 +153,8 @@
     <span style="position: absolute;font-size: 27px;right: 7px;top: 30px;">扫码支付定金</span>
     <span style="position: absolute;font-size: 17px;right: 20px;top:270px;color: #EB5A01;">
         已<a href="javascript:;" id="payforOrder">支付</a>完成？
-            <a href="/usercenter" style="color: #4ab8b4;" target="_blank">点击查看订单</a>  </span>
-    <form action="/Order/addorder" method="post" id="payforOrderForm">
+            <a  style="color: #4ab8b4;" target="_blank">点击查看订单</a>  </span>
+    <form action="/orders/Order/addorder" method="post" id="payforOrderForm">
         <input type="hidden" name="orderstatus" value="2">
         <input type="hidden" id="OrderUserId" name="uid" value="${sessionScope.user.id}">
         <input type="hidden" name="pickaddress" value="${ordetails.shop.city.name}${ordetails.shop.name}">

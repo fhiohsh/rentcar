@@ -14,7 +14,7 @@
     <li ><a href="/a">首页</a><span></span></li>
     <li class="active"><a href="/cars/shopsCar/1201">租车</a><span></span></li>
     <li><a href="/cars/pages/1">车型查询</a><span></span></li>
-    <li><a href="/shop">营业网点</a><span></span></li>
+    <li><a href="/shopIn/shop">营业网点</a><span></span></li>
 </ul>
 <div class="clear_fix"></div>
 <div class="crumbp"> <a href="#">首页</a> <em>&gt;</em> <span>租车门店</span> </div>
@@ -33,7 +33,7 @@
         <!--门店-->
         <div class="good_car good_car2">
             <div class="block-description"> <span class="title fl">优质车源</span>
-                <span class="mores fr"><a href="/shopByCity/${shop.city.name}">查看更多>></a></span></div>
+                <span class="mores fr"><a href="/shopIn/shopByCity/${shop.city.name}">查看更多>></a></span></div>
             <div class="clear_fix"></div>
             <div class="goodcarlist">
                 <!-- <div class="fl"><img src="images/banner1.jpg" /></div> -->
@@ -48,7 +48,7 @@
                                                           href="" target="_blank" class="info-title">${cars.name}</a></p>
                                     <p class="fc-gray"><span class="tag-gray">${cars.city.name}</span><span class="">三箱 ${cars.seats}座 自动</span>
                                         <em class="shuxian">|</em> ${cars.carml}</p>
-                                    <p class="priType-s"><span> <i class="fc-org priType" name> ${cars.rentprice}/天 </i> </span></p>
+                                    <p class="priType-s"><span> <i class="fc-org priType"> ${cars.rentprice}/天 </i> </span></p>
                                     <a href="/cars/carShops/${shop.city.name}/${cars.name}"><div class="carlist-btn">预定</div></a>
                                 </div>
                             </li>

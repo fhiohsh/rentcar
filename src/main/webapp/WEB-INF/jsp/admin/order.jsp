@@ -84,7 +84,8 @@
                                         <td><span>待取车</span></td>
 
                                         <td><button class="viewSign">查看签字</button></td>
-                                        <td class="delete"><button onclick="btn_delete(1)"><i
+                                        <input type="hidden" value='${order.contractimg}' id="contractId">
+                                        <td class="delete"><button onclick="updateStatus('5','${order.id}','${order.user.id}','${order.car.id}')"><i
                                                 class="icon-trash bigger-120"></i>取车完成</button><br>&nbsp;&nbsp;&nbsp;&nbsp;
                                             <button onclick="btn_delete(1)"><i
                                                     class="icon-trash bigger-120"></i>车辆退约</button></td>
@@ -349,6 +350,7 @@
 <script>
 
     $(".viewSign").click(function () {
+        var imgName = $('#contractId').val();
         layer.open({
             title:"合同详情",
             type: 1,
@@ -356,7 +358,7 @@
             closeBtn: 0, //不显示关闭按钮
             anim: 2,
             shadeClose: true, //开启遮罩关闭
-            content: '<div style="width:800px;height:400px;"><img src="https://externalimage.1hai.cn/412/4bcec9e8a8c140a79a35942bdf660d7c.png"></div>'
+            content: '<div style="width:800px;height:400px;"><img src="/statics/imgs/'+imgName+' " style="width: 400px;height: 400px;margin-left: 170px;"></div>'
         });
     });
 
@@ -415,6 +417,25 @@
             dialogModal: true,
             iframeWidth: 500,
             iframeHeight: 400
+        });
+    }
+    var updateStatus = function(fg,orderId,uid,carId) {
+        $.jq_Confirm({
+            message: "确定订单 -"+orderId,
+            btnOkClick: function() {
+                $.ajax({
+                    type: "post",
+                    url: "/orders/user/Cancel",
+                    data: {fg: fg,orderId:orderId,uid:uid,carId:carId},
+                    success: function(data) {
+                        if (data.result === '1') {
+                           layer.msg("完成订单~")
+                        }else{
+                            layer.msg("订单异常~")
+                        }
+                    }
+                });
+            }
         });
     }
     var btn_delete = function(id) {

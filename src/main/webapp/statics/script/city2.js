@@ -195,7 +195,7 @@ jQuery (function ($)
                 var txt = $(this).text();
                 currentCity.text (txt);
                 siteName.text (txt);
-                location.href="/shopByCity/"+txt.toString();
+                location.href="/shopIn/shopByCity/"+txt.toString();
 
             });
             td.append(a);

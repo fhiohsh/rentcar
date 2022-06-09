@@ -18,7 +18,7 @@
     <li ><a href="/a">首页</a><span></span></li>
     <li ><a href="/cars/shopsCar/1201">租车</a><span></span></li>
     <li><a href="/cars/pages/1">车型查询</a><span></span></li>
-    <li class="active"><a href="/shop">营业网点</a><span></span></li>
+    <li class="active"><a href="/shopIn/shop">营业网点</a><span></span></li>
 </ul>
 <div class="clear_fix"></div>
 <div class="crumbp"> <a href="#">首页</a> <em>&gt;</em> <span>营业网点</span><em>&gt;</em> <span>地图导航</span> </div>
@@ -151,7 +151,7 @@
             '<div style=""><p style="line-height:1.5;font-size:13px;">营业时间：<b>${shop.business_hours}</b></p>' +
             '<p style="line-height:1.5;font-size:13px;">门店电话：<b>${shop.phone}</b></p></div>' +
             '<div style="text-align:right;"><a href="/cars/shopsCar/${shop.id}" style="color:#23b7b7; font-weight: bolder;font-size: 14px;">查看门店>></a>'+
-            '<br><a href="/saveReturnAddress/${shop.city.name}/${shop.street.name}/${shop.address}/${shop.name}/${sessionScope.user.id}" style="color:#23b7b7; font-weight: bolder;font-size: 14px;">在此还车>></a></div>';
+            '<br><a href="/orders/saveReturnAddress/${shop.city.name}/${shop.street.name}/${shop.address}/${shop.name}/${sessionScope.user.id}" style="color:#23b7b7; font-weight: bolder;font-size: 14px;">在此还车>></a></div>';
 
          addinfo(cons, marker[${i.index}]);
          console.log(${i.index});

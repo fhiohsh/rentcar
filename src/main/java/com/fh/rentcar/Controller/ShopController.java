@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequestMapping("/shopIn")
 public class ShopController {
     @Autowired
     private CityService cityService;
@@ -25,10 +26,6 @@ public class ShopController {
     @Autowired
     private ShopService shopService;
 
-    @RequestMapping("/toShop")
-    public String toShops(){
-        return "shopCars";
-    }
 
     /**
      * 根据城市选门店

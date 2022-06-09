@@ -36,7 +36,7 @@
     <div class="msgp">
         <p>订单提交成功！请您按时去门店取车</p>
         <em class="msgimg"></em>
-        <span>查看您的<a href="/user/usercenters/${sessionScope.user.id}"> 订单</a></span>
+        <span>查看您的<a href="/orders/user/usercenters/${sessionScope.user.id}"> 订单</a></span>
     </div>
 </div>
 <%@ include file="common/footer.jsp"%>

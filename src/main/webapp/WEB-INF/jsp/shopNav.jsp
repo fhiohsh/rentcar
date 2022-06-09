@@ -15,7 +15,7 @@
     <li><a href="/a">首页</a><span></span></li>
     <li><a href="/cars/shopsCar/1201">租车</a><span></span></li>
     <li><a href="/carList">车型查询</a><span></span></li>
-    <li class="active"><a href="/shop">营业网点</a><span></span></li>
+    <li class="active"><a href="/shopIn/shop">营业网点</a><span></span></li>
 </ul>
 <div class="clear_fix"></div>
 <div class="crumbp">
@@ -56,7 +56,7 @@
                         <ul>
                             <c:forEach var="city" items="${cities}">
                                 <c:if test="${city.letter == al}">
-                                <li><a href="/shopByCity/${city.name}">${city.name}</a></li>
+                                <li><a href="/shopIn/shopByCity/${city.name}">${city.name}</a></li>
                             </c:if>
 
                             </c:forEach>
@@ -77,22 +77,22 @@
                 <span>A</span>
                 <ul>
                     <li>
-                        <a href="/c_anshan/">鞍山租车</a></li>
+                        <a href="/shopIn/shopByCity/北京">鞍山租车</a></li>
                 </ul>
             </div>
             <div class="citylistss clear_fix1">
                 <span>B</span>
                 <ul>
                     <li>
-                        <a href="/c_beijing/">北京租车</a></li>
+                        <a href="/shopIn/shopByCity/北京">北京租车</a></li>
                     <li>
-                        <a href="/c_baoding/">保定租车</a></li>
+                        <a href="/shopIn/shopByCity/北京">保定租车</a></li>
                     <li>
-                        <a href="/c_baotou/">包头租车</a></li>
+                        <a href="/shopIn/shopByCity/北京">包头租车</a></li>
                     <li>
-                        <a href="/c_baoji/">宝鸡租车</a></li>
+                        <a href="/shopIn/shopByCity/北京">宝鸡租车</a></li>
                     <li>
-                        <a href="/c_bengbu/">蚌埠租车</a></li>
+                        <a href="/shopIn/shopByCity/北京">蚌埠租车</a></li>
                 </ul>
             </div>
         </div>

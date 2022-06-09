@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/orders")
 public class OrderController {
     @Autowired
     private CityService cityService;
@@ -130,13 +132,15 @@ public class OrderController {
         maps.put("orderstatus",fg);
         orderService.updateOrder(maps);
 
-        if(fg.equals("1") || fg.equals("4")){
+        if(fg.equals("1") || fg.equals("5")){
             Cars cars = new Cars();
             cars.setId(Integer.parseInt(carId));
             cars.setRentstatus(1);
             carsService.updateCarStatus(cars);
             maps.put("result","1");
         }else if(fg.equals("0")){
+            maps.put("result","0");
+        }else{
             maps.put("result","0");
         }
         return maps;
@@ -150,7 +154,7 @@ public class OrderController {
     @GetMapping("/orderReturnAddress/{orderId}")
     public String orderReturnAddress(@PathVariable("orderId") int orderId){
         ToReturnAddress.setId(orderId);
-        return "redirect:/shopByCity";
+        return "redirect:/shopIn/shopByCity";
     }
     @RequestMapping("/saveReturnAddress/{returnCity}/{returnStreet}/{returnAddress}/{returnShopName}/{uid}")
     public String optReturnAddress(@PathVariable("returnCity") String returnCity,
@@ -211,7 +215,7 @@ public class OrderController {
             e.printStackTrace();
         }
 
-        return "redirect:/user/usercenters/"+uid;
+        return "redirect:/orders/user/usercenters/"+uid;
     }
 
     /**

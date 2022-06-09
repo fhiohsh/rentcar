@@ -8,7 +8,7 @@
                 <c:choose>
                     <c:when test="${not empty sessionScope.user && !(sessionScope.user eq null)}">
                         <span class="userShow">
-                    <p>您好,</p><a href="/user/usercenters/${sessionScope.user.id}" class="userShowInfo">${sessionScope.user.phone}</a>
+                    <p>您好,</p><a href="/orders/user/usercenters/${sessionScope.user.id}" class="userShowInfo">${sessionScope.user.phone}</a>
                             <p class="ulogout" style="cursor: pointer;">| 注销账号</p>
                     </span>
                     </c:when>
@@ -34,7 +34,7 @@
                         </c:otherwise>
                     </c:choose>
                 <span>|</span>
-                <a href="/admin/ad" target="_blank" title="帮助中心">
+                <a href="" target="_blank" title="帮助中心">
                     帮助中心
                 </a>
                 <span>|</span>
@@ -87,7 +87,7 @@
     <%--var uids = '${sessionScope.user.id}';--%>
 
     $('.usercenter').click(function () {
-        location.href = '/user/usercenters/'+'${sessionScope.user.id}';
+        location.href = '/orders/user/usercenters/'+'${sessionScope.user.id}';
     });
 
     $(".nologin").click(function () {

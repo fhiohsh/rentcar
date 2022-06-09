@@ -8,6 +8,10 @@
         insert into user_info(username,password,phone,email) values (#{username},#{password},#{phone},#{email})
     </insert>
 
+    <select id="verifyUser" resultType="com.fh.rentcar.pojo.User">
+        select * from user_info where username = #{username}
+    </select>
+
     <select id="selectOne" parameterType="java.util.Map" resultType="com.fh.rentcar.pojo.User">
         select * from user_info
         <trim prefix="where" prefixOverrides="and|or">
@@ -25,6 +29,12 @@
                 and password = #{password}
             </if>
         </trim>
+    </select>
+
+    <select id="getUserRolesByUid" resultType="com.fh.rentcar.pojo.Role">
+        select r.id,r.permissions,r.name
+        from roles r,user_roles ur
+        where r.id = ur.rid and ur.uid = #{id}
     </select>
 
 </mapper>

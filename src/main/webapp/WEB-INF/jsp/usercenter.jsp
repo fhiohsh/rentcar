@@ -13,7 +13,7 @@
     <li><a href="/a">首页</a><span></span></li>
     <li><a href="/cars/shopsCar/1201">租车</a><span></span></li>
     <li><a href="/cars/pages/1">车型查询</a><span></span></li>
-    <li><a href="/shop">营业网点</a><span></span></li>
+    <li><a href="/shopIn/shop">营业网点</a><span></span></li>
 </ul>
 <div class="clear_fix"></div>
 <!--会员中心-->
@@ -171,6 +171,9 @@
                                                         <c:if test="${orders.orderstatus eq '5'}">
                                                             订单完成✔
                                                         </c:if>
+                                                        <c:if test="${orders.orderstatus eq '0'}">
+                                                            订单完成✔
+                                                        </c:if>
                                                         )
                                                     </b>
                                                     </a>
@@ -278,7 +281,7 @@
 
 
     var selectShop = function(orderId){
-        location.href = "/orderReturnAddress/"+orderId;
+        location.href = "/orders/orderReturnAddress/"+orderId;
     };
 
     $("#timebtn").click(function () {
@@ -291,7 +294,7 @@
     var CancelOrder = function (fg,orderId,cid) {
         $.ajax({
             type:"POST",
-            url:"/user/Cancel",
+            url:"/orders/user/Cancel",
             data:{fg:fg,orderId:orderId,uid:'${sessionScope.user.id}',carId:cid},
             dataType: 'json',
             success:function(data){
@@ -316,7 +319,7 @@
         layer.msg("合同签字已保存",{icon: 1,time:400},function(index){
             $.ajax({
                 type:"POST",
-                url:"/tbase",
+                url:"/orders/tbase",
                 data:{bases:$('#signimg')[0].src,orderId:filename,uid:f2name},
                 dataType: 'json',
                 success:function(data){
@@ -357,7 +360,7 @@
                                 layer.msg("订单已完成",{icon: 1,time:300},function(index){
                                     $.ajax({
                                         type:"POST",
-                                        url:"/user/Cancel",
+                                        url:"/orders/user/Cancel",
                                         data:{fg:'4',orderId:orderId,uid:'${sessionScope.user.id}',carId:carId},
                                         dataType: 'json',
                                         success:function(data){
@@ -402,7 +405,7 @@
             time:300},function () {
             layer.prompt({title:'增加天数',formType:0},function(value, index){
                 layer.alert("续租成功~",function () {
-                    location.href="/order/renew/"+orderID+"/"+value+"/"+oldreturn+"/"+nowDays+"/"+rentprice+"/"+${sessionScope.user.id};
+                    location.href="/orders/order/renew/"+orderID+"/"+value+"/"+oldreturn+"/"+nowDays+"/"+rentprice+"/"+${sessionScope.user.id};
                 });
                 layer.close(index);
             })

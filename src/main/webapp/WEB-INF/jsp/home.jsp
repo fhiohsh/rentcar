@@ -152,9 +152,9 @@
     <div class="menu_r">
         <div class="flexslider">
             <ul class="slides">
-                <li style="background-image:url(/statics/imgs/轮播1.jpg);"></li>
-                <li style="background-image:url(/statics/imgs/轮播1.jpg);"></li>
-                <li style="background-image:url(/statics/images/3.jpg);"></li>
+                <li style="background-image:url(/statics/imgs/shuffing-2.jpg);"></li>
+                <li style="background-image:url(/statics/imgs/shuffing-0.png);"></li>
+                <li style="background-image:url(/statics/imgs/shuffling-1.png);"></li>
                 <li style="background-image:url(/statics/images/4.jpg);"></li>
             </ul>
         </div>

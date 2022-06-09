@@ -66,11 +66,10 @@
                         <!--分页显示角色信息 end-->
                     </li>
                 </ul>
-                <!-- 添加店员 -->
+                <!-- 添加门店 2 -->
                 <ul class="theme-popbod dform" style="display: none;">
                     <div class="am-cf admin-main" style="padding-top: 0px;">
                         <!-- content start -->
-
                         <div class="am-cf admin-main" style="padding-top: 0px;">
                             <!-- content start -->
                             <div class="admin-content">

@@ -15,7 +15,7 @@
     <li><a href="/a">首页</a><span></span></li>
     <li><a href="/cars/shopsCar/1201">租车</a><span></span></li>
     <li class="active"><a href="/carList">车型查询</a><span></span></li>
-    <li ><a href="/shop">营业网点</a><span></span></li>
+    <li ><a href="/shopIn/shop">营业网点</a><span></span></li>
 </ul>
 <div class="clear_fix"></div>
 <div class="crumbp"> <a href="#">首页</a> <em>&gt;</em> <span>个人二手车</span> </div>
@@ -112,7 +112,7 @@
     <div id="modal-content">
         <!-- <img src="img\car1.jpg" alt="" style="width: 500px;height: 500px;"> -->
         <div id="neirong-1">
-            <form action="/Order/SecondStep" id="orderCarInfo" method="post">
+            <form action="/orders/Order/SecondStep" id="orderCarInfo" method="post">
 <%--                <div class="denglu">预约时间</div>--%>
                 <div id="time">
                     <div id="yhu">取车时间: <input type="date" name="pickcartime" id="curtime"></div>

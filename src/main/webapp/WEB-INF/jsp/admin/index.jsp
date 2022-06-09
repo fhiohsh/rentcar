@@ -238,14 +238,14 @@
                     <!-- 小图标 -->
                     <i class="icon-user" style="color: black;font-size: 19px;"></i>
                 </div>
-                管理员
+                ${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}
                 <!-- 下滑 -->
                 <i style="margin-left: 8px;" class="icon-caret-down"></i>
 
                 <ul class="headerlitools_ulinfo">
                     <li style="border-top: 1px solid #E4ECF3;">
                         <i class="icon-off" style="margin-right: 20px;"></i>
-                        <a href="/a" style="color: black; text-decoration: none;">退出</a>
+                        <a href="/logout" style="color: black; text-decoration: none;">退出</a>
                     </li>
                 </ul>
             </li>
